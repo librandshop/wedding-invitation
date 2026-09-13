@@ -1,26 +1,13 @@
-# Wedding invitation
+# Ye & Nang's wedding invitation
 
-A no-build wedding invitation site that can be hosted free with GitHub Pages.
+A bilingual, no-build wedding invitation published with GitHub Pages.
 
-## Personalize it
+- Invitation: https://librandshop.github.io/ye-and-nang/
+- Thai version: https://librandshop.github.io/ye-and-nang/?lang=th
+- RSVP deadline: 30 September 2026
+- Wedding date: Sunday, 8 November 2026
 
-Open `index.html` in an editor and replace the sample date, venue, address, dress code, maps link, and RSVP email. The couple names are already set to Ye Moe Myint and Nang Htet Htet Aung. Then update the `weddingDate` near the top of `script.js` using your ceremony time in this format:
+Edit `index.html` for page content and links, `styles.css` for the design, and `script.js` for English/Thai text and the countdown. The Apple Calendar/Outlook event is in `ye-nang-wedding.ics`. See `HANDOVER.md` for the current project status and known details still to confirm.
 
-```js
-const weddingDate = new Date("2026-11-08T00:00:00");
-```
-
-You can preview the site locally by opening `index.html` in a browser.
-
-## Publish with GitHub Pages
-
-1. Create a new GitHub repository, for example `wedding-invitation`.
-2. Upload these files to the repository root and commit them.
-3. On GitHub, open **Settings** â†’ **Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**, then select branch **main** and folder **/(root)**. Save.
-5. After GitHub finishes deploying, it will show your public URL, typically `https://YOUR-USERNAME.github.io/wedding-invitation/`.
-
-GitHub Pages normally takes a minute or two after the first deployment. Every new commit updates the invitation automatically.
-
-> The RSVP button opens an email reply. A static GitHub Pages site cannot save form submissions on its own; use an RSVP service or a form backend if you prefer a web form.
+To preview locally, open `index.html` in a browser. The site is deployed from the `main` branch of `librandshop/ye-and-nang`; new commits publish through GitHub Pages.
 

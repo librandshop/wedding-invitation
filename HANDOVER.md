@@ -4,9 +4,9 @@
 
 - Couple: Ye Moe Myint (Ye) and Nang Htet Htet Aung (Nang)
 - Wedding: Sunday, 8 November 2026
-- Live site: https://librandshop.github.io/wedding-invitation/
-- Thai preview: https://librandshop.github.io/wedding-invitation/?lang=th
-- Repository: https://github.com/librandshop/wedding-invitation
+- Live site: https://librandshop.github.io/ye-and-nang/
+- Thai preview: https://librandshop.github.io/ye-and-nang/?lang=th
+- Repository: https://github.com/librandshop/ye-and-nang
 - RSVP form: https://forms.gle/t9pPc5BuD8Esa8QF6
 - RSVP deadline: 30 September 2026
 - Venue map: https://maps.app.goo.gl/vTDBF3szrC5VXmnKA
@@ -36,5 +36,5 @@ Event times and on-page venue text are intentionally not invented: the schedule 
 2. Check the published RSVP form still permits intended guests to respond. Each guest may bring at most one plus-one; Thai guests should enter both their own and their plus-one's nicknames, as specified in the form reference.
 3. Test the live invitation and calendar choices on actual iPhone and Android devices.
 
-To publish changes, update the `main` branch of `librandshop/wedding-invitation`; GitHub Pages deploys from it. The `.preview` directory holds local screenshots only and is not part of the site.
+To publish changes, update the `main` branch of `librandshop/ye-and-nang`; GitHub Pages deploys from it. The `.preview` directory holds local screenshots only and is not part of the site.
 
