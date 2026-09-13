@@ -260,7 +260,7 @@ h1 em {
 .venue__map-decoration { position: absolute; inset: 24% 26%; border: 1px solid rgba(201,130,152,.28); border-radius: 48% 52% 45% 55%; transform: rotate(-23deg); }
 .venue__map-label { position: absolute; top: 24%; left: 15%; z-index: 1; margin: 0; color: var(--plum); font-family: "Cormorant Garamond", Georgia, serif; font-size: 31px; font-style: italic; line-height: .87; transform: rotate(-10deg); }
 .venue__pin { position: absolute; top: 49%; left: 52%; z-index: 2; display: grid; width: 43px; height: 43px; border-radius: 50% 50% 50% 0; background: var(--rose-deep); color: white; font-size: 13px; place-items: center; transform: rotate(-45deg); }
-.venue__pin::first-letter { display: inline-block; transform: rotate(45deg); }
+.venue__pin span { display: inline-block; transform: rotate(45deg); }
 .venue__copy { padding: 50px clamp(38px, 7vw, 100px); }.venue__copy h2 { font-size: clamp(43px, 4.3vw, 61px); }.venue__copy > p:not(.eyebrow) { margin-bottom: 25px; color: var(--plum-soft); }
 .text-link { padding-bottom: 5px; border-bottom: 1px solid var(--rose); color: var(--plum); font-size: 10px; font-weight: 700; letter-spacing: .15em; text-decoration: none; text-transform: uppercase; }.text-link span { padding-left: 8px; color: var(--rose-deep); font-size: 18px; vertical-align: -1px; }
 
