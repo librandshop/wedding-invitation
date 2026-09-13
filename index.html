@@ -11,10 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260913-rsvp" />
+    <link rel="stylesheet" href="styles.css?v=20260913-bilingual" />
   </head>
   <body>
     <main>
@@ -23,19 +23,22 @@
         <div class="hero__overlay"></div>
         <div class="hero__sprig hero__sprig--top" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         <div class="hero__sprig hero__sprig--bottom" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-
         <div class="hero__content container">
-          <p class="eyebrow">Together with their families</p>
-          <p class="hero__invite">joyfully invite you to celebrate the wedding of</p>
+          <nav class="language-switch" aria-label="Choose language">
+            <button class="language-switch__button is-active" type="button" data-language="en" aria-pressed="true">EN</button>
+            <button class="language-switch__button" type="button" data-language="th" aria-pressed="false">TH</button>
+          </nav>
+          <p class="eyebrow" data-i18n="heroEyebrow">Together with their families</p>
+          <p class="hero__invite" data-i18n="heroInvite">joyfully invite you to celebrate the wedding of</p>
           <h1 id="couple-names"><span>Ye</span><em>&amp;</em><span>Nang</span></h1>
           <p class="hero__full-names">Ye Moe Myint &amp; Nang Htet Htet Aung</p>
-          <div class="hero__date">Sunday, the eighth<br />of November</div>
-          <p class="hero__year">Two Thousand Twenty-Six</p>
-          <a class="button button--light" href="#celebrate">Save the date</a>
+          <div class="hero__date" data-i18n-html="heroDate">Sunday, the eighth<br />of November</div>
+          <p class="hero__year" data-i18n="heroYear">Two Thousand Twenty-Six</p>
+          <a class="button button--light" href="#celebrate" data-i18n="saveDate">Save the date</a>
         </div>
 
         <a class="scroll-cue" href="#celebrate" aria-label="Scroll to wedding details">
-          <span>Details</span><i></i>
+          <span data-i18n="details">Details</span><i></i>
         </a>
       </section>
 
@@ -43,9 +46,9 @@
         <div class="container intro__layout">
           <div class="ornament ornament--left" aria-hidden="true">&#10022;</div>
           <div class="intro__copy">
-            <p class="eyebrow">A celebration of love</p>
-            <h2 id="celebrate-title">We're getting married</h2>
-            <p>
+            <p class="eyebrow" data-i18n="celebrateEyebrow">A celebration of love</p>
+            <h2 id="celebrate-title" data-i18n="celebrateTitle">We're getting married</h2>
+            <p data-i18n="celebrateCopy">
               We would be so happy to have you by our side as we begin our
               next chapter. Join us for an evening of vows, dinner, dancing,
               and a little bit of magic.
@@ -57,26 +60,26 @@
 
       <section class="schedule section section--sage" aria-labelledby="schedule-title">
         <div class="container">
-          <p class="eyebrow">The day</p>
-          <h2 id="schedule-title">Sunday, November 8, 2026</h2>
+          <p class="eyebrow" data-i18n="scheduleEyebrow">The day</p>
+          <h2 id="schedule-title" data-i18n="scheduleDate">Sunday, November 8, 2026</h2>
           <div class="schedule__grid">
             <article class="schedule-card">
               <div class="schedule-card__icon" aria-hidden="true">&loz;</div>
-              <h3>Ceremony</h3>
-              <p class="schedule-card__time">Time to be announced</p>
-              <p>Wedding details<br />will be shared soon</p>
+              <h3 data-i18n="ceremony">Ceremony</h3>
+              <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
+              <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
             <article class="schedule-card">
               <div class="schedule-card__icon" aria-hidden="true">&#10022;</div>
-              <h3>Reception</h3>
-              <p class="schedule-card__time">Time to be announced</p>
-              <p>Wedding details<br />will be shared soon</p>
+              <h3 data-i18n="reception">Reception</h3>
+              <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
+              <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
             <article class="schedule-card">
               <div class="schedule-card__icon" aria-hidden="true">&#10047;</div>
-              <h3>Dinner &amp; Dancing</h3>
-              <p class="schedule-card__time">Time to be announced</p>
-              <p>Wedding details<br />will be shared soon</p>
+              <h3 data-i18n="dinnerDancing">Dinner &amp; Dancing</h3>
+              <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
+              <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
           </div>
         </div>
@@ -86,15 +89,15 @@
         <div class="container venue__layout">
           <div class="venue__map-card">
             <div class="venue__map-decoration" aria-hidden="true"></div>
-            <p class="venue__map-label">Wedding<br />venue</p>
+            <p class="venue__map-label" data-i18n-html="venueLabel">Wedding<br />venue</p>
             <div class="venue__pin" aria-hidden="true"><span>&hearts;</span></div>
           </div>
           <div class="venue__copy">
-            <p class="eyebrow">Where to find us</p>
-            <h2 id="venue-title">Our wedding venue</h2>
-            <p>Tap below to see the location and get directions<br />on Google Maps.</p>
+            <p class="eyebrow" data-i18n="venueEyebrow">Where to find us</p>
+            <h2 id="venue-title" data-i18n="venueTitle">Our wedding venue</h2>
+            <p data-i18n-html="venueCopy">Tap below to see the location and get directions<br />on Google Maps.</p>
             <a class="text-link" href="https://maps.app.goo.gl/vTDBF3szrC5VXmnKA" target="_blank" rel="noreferrer">
-              Open in Google Maps <span aria-hidden="true">&rarr;</span>
+              <span data-i18n="openMaps">Open in Google Maps</span> <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </div>
@@ -102,34 +105,34 @@
 
       <section class="countdown section section--dark" aria-labelledby="countdown-title">
         <div class="container">
-          <p class="eyebrow eyebrow--light">Counting down</p>
-          <h2 id="countdown-title">Until we say I do</h2>
+          <p class="eyebrow eyebrow--light" data-i18n="countdownEyebrow">Counting down</p>
+          <h2 id="countdown-title" data-i18n="countdownTitle">Until we say I do</h2>
           <div class="countdown__grid" aria-live="polite">
-            <div><strong id="days">--</strong><span>Days</span></div>
-            <div><strong id="hours">--</strong><span>Hours</span></div>
-            <div><strong id="minutes">--</strong><span>Minutes</span></div>
-            <div><strong id="seconds">--</strong><span>Seconds</span></div>
+            <div><strong id="days">--</strong><span data-i18n="days">Days</span></div>
+            <div><strong id="hours">--</strong><span data-i18n="hours">Hours</span></div>
+            <div><strong id="minutes">--</strong><span data-i18n="minutes">Minutes</span></div>
+            <div><strong id="seconds">--</strong><span data-i18n="seconds">Seconds</span></div>
           </div>
         </div>
       </section>
 
       <section class="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
         <div class="container rsvp__content">
-          <p class="eyebrow">Kindly reply</p>
-          <h2 id="rsvp-title">Will you celebrate with us?</h2>
-          <p>Our RSVP form will be available here soon.</p>
-          <span class="button button--disabled">RSVP link coming soon</span>
-          <p class="rsvp__note">Please reply by the date shown on your invitation</p>
+          <p class="eyebrow" data-i18n="rsvpEyebrow">Kindly reply</p>
+          <h2 id="rsvp-title" data-i18n="rsvpTitle">Will you celebrate with us?</h2>
+          <p data-i18n="rsvpCopy">Our RSVP form will be available here soon.</p>
+          <span class="button button--disabled" data-i18n="rsvpButton">RSVP link coming soon</span>
+          <p class="rsvp__note" data-i18n="rsvpNote">Please reply by the date shown on your invitation</p>
         </div>
       </section>
     </main>
 
     <footer>
       <p>Ye <span>&amp;</span> Nang</p>
-      <small>November 8, 2026</small>
+      <small data-i18n="footerDate">November 8, 2026</small>
     </footer>
 
-    <script src="script.js?v=20260913-rsvp"></script>
+    <script src="script.js?v=20260913-bilingual"></script>
   </body>
 </html>
 
