@@ -14,50 +14,69 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260913-luxe-rose" />
+    <link rel="stylesheet" href="styles.css?v=20260913-editorial-rose" />
   </head>
   <body>
+    <header class="site-header">
+      <a class="site-header__brand" href="#top" aria-label="Ye and Nang, back to top">Y<span>&amp;</span>N</a>
+      <nav class="language-switch" aria-label="Choose language">
+        <button class="language-switch__button is-active" type="button" data-language="en" aria-pressed="true">EN</button>
+        <button class="language-switch__button" type="button" data-language="th" aria-pressed="false">TH</button>
+      </nav>
+    </header>
     <main>
-      <section class="hero" aria-labelledby="couple-names">
-        <div class="hero__image" role="img" aria-label="Soft pink floral wedding illustration"></div>
-        <div class="hero__overlay"></div>
-        <div class="hero__sprig hero__sprig--top" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-        <div class="hero__sprig hero__sprig--bottom" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-        <div class="hero__content container">
-          <nav class="language-switch" aria-label="Choose language">
-            <button class="language-switch__button is-active" type="button" data-language="en" aria-pressed="true">EN</button>
-            <button class="language-switch__button" type="button" data-language="th" aria-pressed="false">TH</button>
-          </nav>
-          <p class="eyebrow" data-i18n="heroEyebrow">Together with their families</p>
-          <p class="hero__invite" data-i18n="heroInvite">joyfully invite you to celebrate the wedding of</p>
-          <h1 id="couple-names"><span>Ye</span><em>&amp;</em><span>Nang</span></h1>
-          <p class="hero__full-names">Ye Moe Myint &amp; Nang Htet Htet Aung</p>
-          <div class="hero__date" data-i18n-html="heroDate">Sunday, the eighth<br />of November</div>
-          <p class="hero__year" data-i18n="heroYear">Two Thousand Twenty-Six</p>
-          <div class="calendar-actions">
-            <a class="button button--light" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Ye%20%26%20Nang%27s%20Wedding&amp;dates=20261108%2F20261109&amp;details=Ye%20Moe%20Myint%20and%20Nang%20Htet%20Htet%20Aung%20are%20getting%20married.%20See%20the%20invitation%20for%20venue%20details%20and%20directions.&amp;location=https%3A%2F%2Flibrandshop.github.io%2Fwedding-invitation%2F" target="_blank" rel="noopener" data-i18n="saveDate">Add to Google Calendar</a>
-            <a class="button button--calendar-file" href="ye-nang-wedding.ics" download="ye-nang-wedding.ics" data-i18n="calendarFile">Apple Calendar &amp; Outlook</a>
+      <section class="hero" id="top" aria-labelledby="couple-names">
+        <div class="hero__copy">
+          <div class="hero__copy-inner">
+            <p class="eyebrow" data-i18n="heroEyebrow">Together with their families</p>
+            <p class="hero__invite" data-i18n="heroInvite">joyfully invite you to celebrate the wedding of</p>
+            <h1 id="couple-names"><span>Ye</span><em>&amp;</em><span>Nang</span></h1>
+            <p class="hero__full-names">Ye Moe Myint &amp; Nang Htet Htet Aung</p>
+            <div class="hero__rule" aria-hidden="true"><span>&#10047;</span></div>
+            <div class="hero__date" data-i18n-html="heroDate">Sunday, the eighth<br />of November</div>
+            <p class="hero__year" data-i18n="heroYear">Two Thousand Twenty-Six</p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="https://forms.gle/t9pPc5BuD8Esa8QF6" target="_blank" rel="noopener" data-i18n="rsvpButton">RSVP now</a>
+              <a class="hero__details-link" href="#celebrate"><span data-i18n="details">Details</span><span aria-hidden="true">&darr;</span></a>
+            </div>
           </div>
         </div>
+        <div class="hero__visual" aria-hidden="true">
+          <img src="assets/editorial-roses.jpg" alt="" fetchpriority="high" />
+          <span class="hero__visual-label">08 <span>/</span> 11 <span>/</span> 2026</span>
+        </div>
+      </section>
 
-        <a class="scroll-cue" href="#celebrate" aria-label="Scroll to wedding details">
-          <span data-i18n="details">Details</span><i></i>
-        </a>
+      <section class="savebar" aria-label="Calendar options">
+        <div class="container savebar__inner">
+          <div class="savebar__copy">
+            <span class="savebar__star" aria-hidden="true">&#10047;</span>
+            <div>
+              <p class="savebar__eyebrow" data-i18n="savebarTitle">Keep this date close</p>
+              <p data-i18n="scheduleDate">Sunday, November 8, 2026</p>
+            </div>
+          </div>
+          <div class="calendar-actions">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Ye%20%26%20Nang%27s%20Wedding&amp;dates=20261108%2F20261109&amp;details=Ye%20Moe%20Myint%20and%20Nang%20Htet%20Htet%20Aung%20are%20getting%20married.%20See%20the%20invitation%20for%20venue%20details%20and%20directions.&amp;location=https%3A%2F%2Flibrandshop.github.io%2Fwedding-invitation%2F" target="_blank" rel="noopener" data-i18n="saveDate">Add to Google Calendar</a>
+            <a href="ye-nang-wedding.ics" download="ye-nang-wedding.ics" data-i18n="calendarFile">Apple Calendar &amp; Outlook</a>
+          </div>
+        </div>
       </section>
 
       <section class="intro section" id="celebrate" aria-labelledby="celebrate-title">
         <div class="container intro__layout">
-          <div class="ornament ornament--left" aria-hidden="true">&#10047;</div>
-          <div class="intro__copy">
+          <div class="intro__heading">
             <p class="eyebrow" data-i18n="celebrateEyebrow">A celebration of love</p>
             <h2 id="celebrate-title" data-i18n="celebrateTitle">We're getting married</h2>
+          </div>
+          <div class="intro__copy">
+            <span class="intro__flower" aria-hidden="true">&#10047;</span>
             <p data-i18n="celebrateCopy">
               We would be so happy to have you by our side as we begin our
               next chapter. Join us for an evening of vows, dinner, dancing,
               and a little bit of magic.
             </p>
           </div>
-          <div class="ornament ornament--right" aria-hidden="true">&#10047;</div>
         </div>
       </section>
 
@@ -67,19 +86,19 @@
           <h2 id="schedule-title" data-i18n="scheduleDate">Sunday, November 8, 2026</h2>
           <div class="schedule__grid">
             <article class="schedule-card">
-              <div class="schedule-card__icon" aria-hidden="true">&loz;</div>
+              <div class="schedule-card__icon" aria-hidden="true">01</div>
               <h3 data-i18n="ceremony">Ceremony</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
               <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
             <article class="schedule-card">
-              <div class="schedule-card__icon" aria-hidden="true">&#10022;</div>
+              <div class="schedule-card__icon" aria-hidden="true">02</div>
               <h3 data-i18n="reception">Reception</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
               <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
             <article class="schedule-card">
-              <div class="schedule-card__icon" aria-hidden="true">&#10047;</div>
+              <div class="schedule-card__icon" aria-hidden="true">03</div>
               <h3 data-i18n="dinnerDancing">Dinner &amp; Dancing</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
               <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
@@ -90,10 +109,9 @@
 
       <section class="venue section" aria-labelledby="venue-title">
         <div class="container venue__layout">
-          <div class="venue__map-card">
-            <div class="venue__map-decoration" aria-hidden="true"></div>
-            <p class="venue__map-label" data-i18n-html="venueLabel">Wedding<br />venue</p>
-            <div class="venue__pin" aria-hidden="true"><span>&hearts;</span></div>
+          <div class="venue__visual" aria-hidden="true">
+            <img src="assets/editorial-roses.jpg" alt="" loading="lazy" />
+            <span>08.11.2026</span>
           </div>
           <div class="venue__copy">
             <p class="eyebrow" data-i18n="venueEyebrow">Where to find us</p>
@@ -120,12 +138,15 @@
       </section>
 
       <section class="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
-        <div class="container rsvp__content">
-          <p class="eyebrow" data-i18n="rsvpEyebrow">Kindly reply</p>
-          <h2 id="rsvp-title" data-i18n="rsvpTitle">Will you celebrate with us?</h2>
-          <p data-i18n="rsvpCopy">Please let us know whether you can join us by completing our RSVP form.</p>
-          <a class="button" href="https://forms.gle/t9pPc5BuD8Esa8QF6" target="_blank" rel="noopener" data-i18n="rsvpButton">RSVP now</a>
-          <p class="rsvp__note" data-i18n="rsvpNote">Please reply by 30 September 2026</p>
+        <div class="container rsvp__frame">
+          <div class="rsvp__art" aria-hidden="true"><span>Y<span>&amp;</span>N</span></div>
+          <div class="rsvp__content">
+            <p class="eyebrow" data-i18n="rsvpEyebrow">Kindly reply</p>
+            <h2 id="rsvp-title" data-i18n="rsvpTitle">Will you celebrate with us?</h2>
+            <p data-i18n="rsvpCopy">Please let us know whether you can join us by completing our RSVP form.</p>
+            <a class="button button--primary" href="https://forms.gle/t9pPc5BuD8Esa8QF6" target="_blank" rel="noopener" data-i18n="rsvpButton">RSVP now</a>
+            <p class="rsvp__note" data-i18n="rsvpNote">Please reply by 30 September 2026</p>
+          </div>
         </div>
       </section>
     </main>
@@ -135,6 +156,7 @@
       <small data-i18n="footerDate">November 8, 2026</small>
     </footer>
 
-    <script src="script.js?v=20260913-calendar-options"></script>
+    <script src="script.js?v=20260913-editorial-rose"></script>
   </body>
 </html>
+
