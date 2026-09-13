@@ -1,0 +1,151 @@
+:root {
+  --ink: #26362f;
+  --sage: #d9e1d5;
+  --sage-deep: #617260;
+  --cream: #fbfaf5;
+  --rose: #c9978f;
+  --line: #ccd5c9;
+  --paper: #f0f2eb;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+a { color: inherit; }
+
+.container { width: min(1080px, calc(100% - 48px)); margin: 0 auto; }
+
+.section { padding: 112px 0; text-align: center; }
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--sage-deep);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; }
+
+h2 { margin-bottom: 21px; font-size: clamp(42px, 5.5vw, 66px); line-height: .95; }
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 760px;
+  min-height: 100svh;
+  overflow: hidden;
+  color: #fff;
+  place-items: center;
+  text-align: center;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 13% 18%, rgba(242, 220, 199, .95) 0 1.8%, transparent 2.2%),
+    radial-gradient(ellipse at 80% 20%, rgba(235, 207, 205, .8) 0 4%, transparent 4.5%),
+    radial-gradient(ellipse at 25% 73%, rgba(193, 209, 187, .85) 0 5%, transparent 5.5%),
+    radial-gradient(ellipse at 87% 78%, rgba(220, 194, 185, .72) 0 7%, transparent 7.5%),
+    linear-gradient(145deg, #7f967e 0%, #627b66 48%, #455a4b 100%);
+  filter: saturate(.8);
+  transform: scale(1.04);
+}
+
+.hero__image::before, .hero__image::after {
+  position: absolute;
+  width: 48vw;
+  height: 48vw;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50% 42% 58% 42%;
+  content: "";
+}
+
+.hero__image::before { top: -15vw; left: -8vw; transform: rotate(30deg); }
+.hero__image::after { right: -13vw; bottom: -18vw; transform: rotate(-25deg); }
+
+.hero__overlay { position: absolute; inset: 0; background: rgba(24, 46, 34, .33); }
+
+.hero__content { position: relative; z-index: 1; padding: 72px 0; }
+.hero .eyebrow { margin-bottom: 11px; color: rgba(255,255,255,.9); }
+.hero__invite { margin-bottom: 13px; font-family: "Cormorant Garamond", Georgia, serif; font-size: 22px; font-style: italic; }
+
+h1 { display: flex; align-items: center; justify-content: center; gap: .18em; margin-bottom: 22px; font-family: "Great Vibes", cursive; font-size: clamp(76px, 12.5vw, 164px); font-weight: 400; line-height: .7; text-shadow: 0 2px 12px rgba(0,0,0,.12); }
+h1 em { font-family: "Cormorant Garamond", Georgia, serif; font-size: .55em; font-style: italic; font-weight: 400; }
+
+.hero__full-names { margin: 17px 0 16px; font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.hero__date { margin-bottom: 2px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(20px, 2.3vw, 28px); letter-spacing: .02em; }
+.hero__year { margin-bottom: 34px; font-size: 11px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; }
+
+.button {
+  display: inline-block;
+  padding: 13px 25px;
+  border: 1px solid currentColor;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.button:hover { transform: translateY(-2px); }
+.button--light:hover { background: #fff; color: var(--ink); }
+.button--dark { color: var(--cream); background: var(--ink); border-color: var(--ink); }
+.button--dark:hover { background: var(--sage-deep); border-color: var(--sage-deep); }
+
+.scroll-cue { position: absolute; z-index: 1; bottom: 26px; display: flex; flex-direction: column; align-items: center; gap: 8px; color: #fff; font-size: 9px; font-weight: 700; letter-spacing: .18em; text-decoration: none; text-transform: uppercase; }
+.scroll-cue i { display: block; width: 1px; height: 24px; background: currentColor; }
+
+.intro { overflow: hidden; }
+.intro__layout { position: relative; display: grid; place-items: center; min-height: 280px; }
+.intro__copy { max-width: 590px; }
+.intro__copy > p:last-child { margin: 0; color: #59675d; }
+.ornament { position: absolute; top: 35%; color: var(--rose); font-size: 100px; opacity: .58; }
+.ornament--left { left: 1%; }.ornament--right { right: 1%; }
+
+.section--sage { background: var(--sage); }
+.schedule__grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 930px; margin: 54px auto 0; }
+.schedule-card { min-height: 225px; padding: 12px 48px 22px; border-right: 1px solid rgba(38,54,47,.2); }
+.schedule-card:last-child { border: 0; }
+.schedule-card__icon { height: 42px; color: var(--rose); font-size: 32px; line-height: 1; }
+.schedule-card h3 { margin: 10px 0 4px; font-size: 31px; line-height: 1; }
+.schedule-card p { margin: 0; font-size: 14px; }
+.schedule-card__time { margin-bottom: 10px !important; color: var(--sage-deep); font-size: 11px !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+
+.venue { padding-bottom: 0; }
+.venue__layout { display: grid; grid-template-columns: 1.12fr .88fr; min-height: 515px; align-items: center; text-align: left; }
+.venue__map-card { position: relative; min-height: 515px; overflow: hidden; background-color: #dfe5d9; background-image: linear-gradient(24deg, transparent 46%, rgba(97,114,96,.22) 47%, rgba(97,114,96,.22) 48%, transparent 49%), linear-gradient(116deg, transparent 48%, rgba(97,114,96,.18) 49%, rgba(97,114,96,.18) 50%, transparent 51%), radial-gradient(circle at 18% 28%, #bdcbb9 0 1px, transparent 2px), radial-gradient(circle at 66% 66%, #bdcbb9 0 2px, transparent 3px); background-size: auto, auto, 18px 18px, 24px 24px; }
+.venue__map-decoration { position: absolute; inset: 16% 19%; border: 1px solid rgba(97,114,96,.38); border-radius: 47% 53% 45% 55%; transform: rotate(-18deg); }
+.venue__map-label { position: absolute; top: 21%; left: 12%; margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: 27px; font-style: italic; line-height: .9; transform: rotate(-12deg); }
+.venue__pin { position: absolute; top: 46%; left: 51%; display: grid; width: 42px; height: 42px; border-radius: 50% 50% 50% 0; background: var(--rose); color: #fff; place-items: center; transform: rotate(-45deg); }
+.venue__pin::first-letter { transform: rotate(45deg); }
+.venue__pin { font-size: 15px; }.venue__pin { text-indent: 1px; }.venue__pin::after { content: ""; }
+.venue__copy { padding: 50px clamp(38px, 7vw, 95px); }.venue__copy h2 { font-size: clamp(42px, 4.4vw, 60px); }.venue__copy > p:not(.eyebrow) { margin-bottom: 23px; color: #59675d; }
+.text-link { padding-bottom: 4px; border-bottom: 1px solid var(--rose); color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-decoration: none; text-transform: uppercase; }.text-link span { padding-left: 9px; color: var(--rose); font-size: 18px; vertical-align: -1px; }
+
+.section--dark { color: var(--cream); background: var(--ink); }.section--dark h2 { margin-bottom: 44px; }.eyebrow--light { color: #c5d5c0; }
+.countdown__grid { display: flex; justify-content: center; gap: clamp(28px, 7vw, 92px); }.countdown__grid div { display: grid; min-width: 62px; }.countdown__grid strong { color: #e0b0a7; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(50px, 6vw, 77px); font-weight: 400; line-height: 1; }.countdown__grid span { margin-top: 12px; font-size: 10px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+
+.rsvp__content { max-width: 650px; }.rsvp__content > p:not(.eyebrow) { color: #59675d; }.rsvp__content .button { margin: 13px 0 25px; }.rsvp__note { margin: 0; color: var(--sage-deep) !important; font-size: 11px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+footer { padding: 35px 24px; background: var(--paper); color: var(--ink); text-align: center; }footer p { margin: 0 0 3px; font-family: "Great Vibes", cursive; font-size: 39px; }footer p span { padding: 0 4px; font-family: "Cormorant Garamond", Georgia, serif; font-size: .6em; font-style: italic; }footer small { color: var(--sage-deep); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+
+@media (max-width: 720px) {
+  .container { width: min(100% - 36px, 540px); }.section { padding: 80px 0; }.hero { min-height: 700px; }.hero__invite { font-size: 20px; }.ornament { display: none; }.schedule__grid { grid-template-columns: 1fr; gap: 0; margin-top: 35px; }.schedule-card { min-height: 0; padding: 27px 10px; border-right: 0; border-bottom: 1px solid rgba(38,54,47,.2); }.schedule-card:last-child { border: 0; }.venue { padding: 0; }.venue__layout { grid-template-columns: 1fr; }.venue__map-card { min-height: 340px; }.venue__copy { padding: 70px 18px; text-align: center; }.countdown__grid { gap: 17px; }.countdown__grid div { min-width: 0; }.countdown__grid span { font-size: 8px; letter-spacing: .1em; }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; }.button { transition: none; } }
+
