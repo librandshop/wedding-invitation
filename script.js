@@ -1,5 +1,5 @@
-// Change this date to your ceremony time. Use the format: YYYY-MM-DDTHH:MM:SS
-const weddingDate = new Date("2027-05-22T16:30:00");
+// Change this to your ceremony time once confirmed. Use: YYYY-MM-DDTHH:MM:SS
+const weddingDate = new Date("2026-11-08T00:00:00");
 
 const units = {
   days: document.querySelector("#days"),
