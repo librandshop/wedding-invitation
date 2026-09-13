@@ -197,6 +197,10 @@ h1 em {
 .button:hover { transform: translateY(-2px); }
 .button--light { border-color: var(--plum); background: var(--plum); color: var(--blush-light); }
 .button--light:hover { border-color: var(--rose-deep); background: var(--rose-deep); }
+.calendar-actions { display: grid; justify-items: center; gap: 10px; }
+.calendar-actions .button { min-width: 232px; }
+.button--calendar-file { border-color: var(--rose-deep); background: rgba(255, 248, 251, .78); color: var(--plum); }
+.button--calendar-file:hover { border-color: var(--plum); background: var(--petal); }
 .button--dark { border-color: var(--rose-deep); background: var(--rose-deep); color: #fff; }
 .button--dark:hover { border-color: var(--plum); background: var(--plum); }
 
