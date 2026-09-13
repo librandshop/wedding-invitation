@@ -7,7 +7,7 @@ A no-build wedding invitation site that can be hosted free with GitHub Pages.
 Open `index.html` in an editor and replace the sample date, venue, address, dress code, maps link, and RSVP email. The couple names are already set to Ye Moe Myint and Nang Htet Htet Aung. Then update the `weddingDate` near the top of `script.js` using your ceremony time in this format:
 
 ```js
-const weddingDate = new Date("2027-05-22T16:30:00");
+const weddingDate = new Date("2026-11-08T00:00:00");
 ```
 
 You can preview the site locally by opening `index.html` in a browser.
