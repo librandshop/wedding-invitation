@@ -1,10 +1,10 @@
 # Floral invitation design
 
-White stationery, floral pink, watercolor garden roses and peonies, with sage botanical details. Existing wedding information, RSVP, calendar downloads, map link, and English/Thai translations are retained.
+White stationery, floral pink, watercolor garden roses and peonies, with sage botanical details. Includes English, Thai, and Burmese, with synchronized language selectors on the envelope screen and the invitation. Language preferences persist across visits, and links can select a language using `?lang=en`, `?lang=th`, or `?lang=my`.
 
 ## Motion
 
-- Click the seal or Open invitation to break the seal, lift the flap, and slide out the card.
+- Click the envelope or seal to break the seal, lift the flap, and slide out the card. There is no separate opening button or visible Open invitation label. The envelope remains a keyboard-accessible button with a translated accessible name.
 - The hero names, invitation text, botanical drawing, and date enter in sequence.
 - Petals drift and flowers gently sway throughout the invitation.
 - Calendar, personal note, schedule cards, venue, countdown, RSVP, and footer reveal on scroll.

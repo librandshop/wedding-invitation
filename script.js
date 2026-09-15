@@ -1,5 +1,5 @@
 const invitationIntro = document.querySelector(".invitation-intro");
-const openInvitation = document.querySelector(".invitation-intro__button");
+const openInvitation = document.querySelector(".envelope");
 const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const motionButton = document.querySelector(".motion-toggle");
 const pageContent = [...document.querySelectorAll(".site-header, main, footer")];
@@ -82,7 +82,6 @@ function initializeInvitation() {
     element.style.setProperty("--delay", `${Math.min(index * 130, 390)}ms`);
   }));
   openInvitation.addEventListener("click", revealInvitation);
-  document.querySelector(".envelope").addEventListener("click", revealInvitation);
   document.querySelector(".replay-button").hidden = false;
   document.querySelector(".replay-button").addEventListener("click", showEnvelope);
   motionButton.hidden = false;
@@ -209,6 +208,7 @@ const translations = {
 };
 
 Object.assign(translations.en, {
+  chooseLanguage: "Choose language",
   openingEyebrow: "A little envelope. A lifetime of love.",
   openingTitle: "Something beautiful awaits",
   letterEyebrow: "You're invited to our wedding",
@@ -220,6 +220,7 @@ Object.assign(translations.en, {
   resumeMotion: "Resume motion",
 });
 Object.assign(translations.th, {
+  chooseLanguage: "เลือกภาษา",
   openingEyebrow: "ซองเล็ก ๆ กับความรักตลอดไป",
   openingTitle: "ความงดงามกำลังรอคุณอยู่",
   letterEyebrow: "ขอเชิญร่วมงานแต่งงานของเรา",
@@ -230,6 +231,56 @@ Object.assign(translations.th, {
   pauseMotion: "หยุดภาพเคลื่อนไหว",
   resumeMotion: "เล่นภาพเคลื่อนไหว",
 });
+
+translations.my = {
+  pageTitle: "Ye နှင့် Nang တို့၏ မင်္ဂလာဖိတ်စာ",
+  pageDescription: "Ye Moe Myint နှင့် Nang Htet Htet Aung တို့၏ မင်္ဂလာဖိတ်စာ။",
+  chooseLanguage: "ဘာသာစကား ရွေးချယ်ရန်",
+  heroEyebrow: "နှစ်ဖက်မိသားစုများနှင့်အတူ",
+  heroInvite: "ကျွန်ုပ်တို့၏ မင်္ဂလာပွဲသို့ ကြွရောက်ချီးမြှင့်ပေးပါရန် လေးစားစွာ ဖိတ်ကြားအပ်ပါသည်",
+  heroDate: "နိုဝင်ဘာလ ၈ ရက်<br>တနင်္ဂနွေနေ့",
+  heroYear: "၂၀၂၆ ခုနှစ်",
+  savebarTitle: "အမှတ်တရနေ့လေးကို မှတ်သားထားပေးပါ",
+  saveDate: "Google Calendar တွင် ထည့်ရန်",
+  calendarFile: "Apple Calendar နှင့် Outlook",
+  details: "အသေးစိတ်",
+  celebrateEyebrow: "ချစ်ခြင်းမေတ္တာကို အတူဆင်နွှဲကြမယ်",
+  celebrateTitle: "ကျွန်ုပ်တို့ လက်ထပ်တော့မည်",
+  celebrateCopy: "ဘဝခရီးသစ်ကို စတင်မည့် အထူးနေ့လေးမှာ သင်နှင့်အတူ ပျော်ရွှင်စွာ ဖြတ်သန်းလိုပါသည်။ မင်္ဂလာကတိသစ္စာပြုခြင်း၊ ညစာသုံးဆောင်ခြင်း၊ ကခုန်ခြင်းတို့နှင့်အတူ လှပသော အမှတ်တရများကို ဖန်တီးကြပါစို့။",
+  scheduleEyebrow: "မင်္ဂလာနေ့ အစီအစဉ်",
+  scheduleDate: "၂၀၂၆ ခုနှစ်၊ နိုဝင်ဘာလ ၈ ရက်၊ တနင်္ဂနွေနေ့",
+  ceremony: "မင်္ဂလာအခမ်းအနား",
+  reception: "မင်္ဂလာဧည့်ခံပွဲ",
+  dinnerDancing: "ညစာနှင့် အကအစီအစဉ်",
+  timeTba: "အချိန်ကို ထပ်မံအသိပေးပါမည်",
+  detailsSoon: "မင်္ဂလာပွဲ အသေးစိတ်ကို<br>မကြာမီ အသိပေးပါမည်",
+  venueLabel: "မင်္ဂလာပွဲ<br>ကျင်းပမည့်နေရာ",
+  venueEyebrow: "ကျင်းပမည့်နေရာ",
+  venueTitle: "ကျွန်ုပ်တို့၏ မင်္ဂလာပွဲနေရာ",
+  venueCopy: "တည်နေရာနှင့် လမ်းညွှန်ကို ကြည့်ရှုရန်<br>အောက်ပါ Google Maps လင့်ခ်ကို နှိပ်ပါ။",
+  openMaps: "Google Maps တွင် ကြည့်ရန်",
+  countdownEyebrow: "နေ့ရက်များကို ရေတွက်ရင်း",
+  countdownTitle: "ကျွန်ုပ်တို့၏ မင်္ဂလာနေ့အထိ",
+  days: "ရက်",
+  hours: "နာရီ",
+  minutes: "မိနစ်",
+  seconds: "စက္ကန့်",
+  rsvpEyebrow: "အကြောင်းပြန်ပေးပါရန်",
+  rsvpTitle: "ကျွန်ုပ်တို့နှင့်အတူ ဆင်နွှဲမည်လား",
+  rsvpCopy: "မင်္ဂလာပွဲသို့ တက်ရောက်နိုင်ခြင်း ရှိ၊ မရှိကို RSVP ဖောင်မှတစ်ဆင့် အကြောင်းပြန်ပေးပါရန် မေတ္တာရပ်ခံအပ်ပါသည်။",
+  rsvpButton: "တက်ရောက်မှု အကြောင်းပြန်ရန်",
+  rsvpNote: "၂၀၂၆ ခုနှစ်၊ စက်တင်ဘာလ ၃၀ ရက် နောက်ဆုံးထား၍ အကြောင်းပြန်ပေးပါရန်",
+  footerDate: "၂၀၂၆ ခုနှစ်၊ နိုဝင်ဘာလ ၈ ရက်",
+  openingEyebrow: "ဖိတ်စာလေးတစ်စောင်၊ တစ်သက်တာချစ်ခြင်းမေတ္တာ",
+  openingTitle: "လှပသော အခိုက်အတန့်လေးက စောင့်ကြိုနေပါတယ်",
+  letterEyebrow: "ကျွန်ုပ်တို့၏ မင်္ဂလာပွဲသို့ ဖိတ်ကြားအပ်ပါသည်",
+  openingPrompt: "ချစ်ခြင်းမေတ္တာဖြင့် သင့်အတွက် ပေးပို့ထားပါသည်",
+  openInvitation: "မင်္ဂလာဖိတ်စာကို ဖွင့်ရန်",
+  scrollExplore: "မင်္ဂလာပွဲအစီအစဉ်ကို ကြည့်ရန် အောက်သို့ ဆွဲပါ",
+  replay: "ဖိတ်စာအိတ်ကို ပြန်ဖွင့်ရန်",
+  pauseMotion: "လှုပ်ရှားမှု ရပ်ရန်",
+  resumeMotion: "လှုပ်ရှားမှု ပြန်စရန်",
+};
 
 function updateCountdown() {
   const remaining = Math.max(0, weddingDate.getTime() - Date.now());
@@ -254,8 +305,9 @@ function updateCountdown() {
 }
 
 function setLanguage(language) {
-  const copy = translations[language] || translations.en;
-  document.documentElement.lang = language === "th" ? "th" : "en";
+  language = ["en", "th", "my"].includes(language) ? language : "en";
+  const copy = translations[language];
+  document.documentElement.lang = language;
   document.title = copy.pageTitle;
   document.querySelector('meta[name="description"]').setAttribute("content", copy.pageDescription);
 
@@ -284,12 +336,10 @@ document.querySelectorAll("[data-language]").forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.language));
 });
 
-try {
-  const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
-  setLanguage(requestedLanguage === "th" ? "th" : window.localStorage.getItem("invitation-language") || "en");
-} catch {
-  setLanguage("en");
-}
+let savedLanguage = "en";
+try { savedLanguage = window.localStorage.getItem("invitation-language") || "en"; } catch { /* Storage is optional. */ }
+const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+setLanguage(requestedLanguage ?? savedLanguage);
 
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
