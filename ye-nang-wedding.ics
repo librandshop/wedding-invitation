@@ -5,11 +5,15 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ye-nang-wedding-20261108@librandshop.github.io
-DTSTAMP:20260913T000000Z
+DTSTAMP:20260915T000000Z
+SEQUENCE:1
 DTSTART;VALUE=DATE:20261108
 DTEND;VALUE=DATE:20261109
 SUMMARY:Ye & Nang's Wedding
-DESCRIPTION:Ye Moe Myint and Nang Htet Htet Aung are getting married.\nSee the invitation for venue details and directions.
+LOCATION:https://maps.app.goo.gl/vTDBF3szrC5VXmnKA
+DESCRIPTION:Ye Moe Myint and Nang Htet Htet Aung are getting married.
+ \n\nDirections: https://maps.app.goo.gl/vTDBF3szrC5VXmnKA
+ \nInvitation: https://librandshop.github.io/ye-and-nang/
 URL:https://librandshop.github.io/ye-and-nang/
 END:VEVENT
 END:VCALENDAR
