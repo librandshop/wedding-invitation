@@ -106,7 +106,7 @@ function initializeInvitation() {
     ".savebar__copy, .calendar-actions", ".intro__heading, .intro__copy",
     ".schedule > .container > .eyebrow, .schedule h2", ".schedule-card", ".love-divider, .program-note, .letter-bow--reply",
     ".venue__visual, .venue__copy", ".countdown .eyebrow, .countdown h2",
-    ".countdown__grid > div", ".rsvp__frame", ".rsvp__content > *", "footer > *"
+    ".countdown__grid > div", ".rsvp__frame", ".rsvp__content > :not(.rsvp-thanks):not(noscript)", "footer > *"
   ];
   groups.forEach(selector => document.querySelectorAll(selector).forEach((element, index) => {
     element.dataset.reveal = element.matches(".schedule-card, .rsvp__frame") ? "card" : element.matches(".venue__visual") ? "art" : "text";
@@ -264,6 +264,23 @@ const translations = {
 };
 
 Object.assign(translations.en, {
+  guestName: "Your name",
+  guestNamePlaceholder: "Your full name",
+  willAttend: "Will you be joining us?",
+  joyfullyAccepts: "Joyfully accepts",
+  regretfullyDeclines: "Regretfully declines",
+  partySize: "Guests attending, including you",
+  chooseGuestCount: "Choose",
+  plusOneName: "Your plus-one's name",
+  optionalPlaceholder: "Optional",
+  dietaryNeeds: "Dietary requirements or allergies",
+  dietaryPlaceholder: "Please tell us anything we should know",
+  sendRsvp: "Send our RSVP",
+  sendingRsvp: "Sending your reply…",
+  rsvpSendError: "We could not send your reply. Please check your connection and try again.",
+  rsvpThanksTitle: "Thank you, dear guest",
+  rsvpThanksCopy: "Your reply has been received. We cannot wait to celebrate with you.",
+  sendAnotherRsvp: "Send another response",
   dearGuests: "To our dear family & friends,",
   dayTogether: "A day to remember",
   skipOpening: "Skip to invitation",
@@ -280,6 +297,23 @@ Object.assign(translations.en, {
   resumeMotion: "Resume motion",
 });
 Object.assign(translations.th, {
+  guestName: "ชื่อของคุณ",
+  guestNamePlaceholder: "ชื่อ-นามสกุล",
+  willAttend: "คุณจะมาร่วมงานกับเราไหม",
+  joyfullyAccepts: "ยินดีเข้าร่วมงาน",
+  regretfullyDeclines: "ขออภัย ไม่สามารถเข้าร่วมได้",
+  partySize: "จำนวนผู้เข้าร่วม รวมคุณ",
+  chooseGuestCount: "เลือกจำนวน",
+  plusOneName: "ชื่อผู้ติดตามของคุณ",
+  optionalPlaceholder: "ไม่บังคับ",
+  dietaryNeeds: "ข้อจำกัดด้านอาหารหรืออาการแพ้",
+  dietaryPlaceholder: "โปรดแจ้งสิ่งที่เราควรทราบ",
+  sendRsvp: "ส่งคำตอบรับ",
+  sendingRsvp: "กำลังส่งคำตอบของคุณ…",
+  rsvpSendError: "ไม่สามารถส่งคำตอบได้ โปรดตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง",
+  rsvpThanksTitle: "ขอบคุณแขกคนพิเศษของเรา",
+  rsvpThanksCopy: "เราได้รับคำตอบของคุณแล้ว และแทบรอไม่ไหวที่จะได้ฉลองด้วยกัน",
+  sendAnotherRsvp: "ส่งคำตอบอื่น",
   dearGuests: "ถึงครอบครัวและเพื่อน ๆ ที่รัก",
   dayTogether: "วันแห่งความทรงจำ",
   skipOpening: "ข้ามไปยังการ์ดเชิญ",
@@ -297,6 +331,23 @@ Object.assign(translations.th, {
 });
 
 translations.my = {
+  guestName: "သင့်နာမည်",
+  guestNamePlaceholder: "အမည်အပြည့်အစုံ",
+  willAttend: "ကျွန်ုပ်တို့နှင့်အတူ ပါဝင်ဆင်နွှဲမည်လား",
+  joyfullyAccepts: "ဝမ်းမြောက်စွာ တက်ရောက်ပါမည်",
+  regretfullyDeclines: "ဝမ်းနည်းစွာ မတက်ရောက်နိုင်ပါ",
+  partySize: "သင်အပါအဝင် တက်ရောက်မည့်ဦးရေ",
+  chooseGuestCount: "ရွေးချယ်ရန်",
+  plusOneName: "သင်နှင့်အတူလာမည့်သူ၏ အမည်",
+  optionalPlaceholder: "မဖြည့်လည်းရပါသည်",
+  dietaryNeeds: "အစားအစာ ကန့်သတ်ချက် သို့မဟုတ် ဓာတ်မတည့်မှု",
+  dietaryPlaceholder: "ကျွန်ုပ်တို့ သိထားသင့်သည်ကို ပြောပြပေးပါ",
+  sendRsvp: "တက်ရောက်မှု အကြောင်းပြန်ပို့ရန်",
+  sendingRsvp: "သင့်အကြောင်းပြန်ချက်ကို ပို့နေပါသည်…",
+  rsvpSendError: "အကြောင်းပြန်ချက် မပို့နိုင်ပါ။ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။",
+  rsvpThanksTitle: "ချစ်ခင်ရသောဧည့်သည်ကို ကျေးဇူးတင်ပါသည်",
+  rsvpThanksCopy: "သင့်အကြောင်းပြန်ချက်ကို လက်ခံရရှိပါပြီ။ အတူတကွ ဆင်နွှဲရမည့်နေ့ကို စောင့်မျှော်နေပါသည်။",
+  sendAnotherRsvp: "နောက်ထပ် အကြောင်းပြန်ချက် ပို့ရန်",
   dearGuests: "ချစ်ရသော မိသားစုနှင့် မိတ်ဆွေများသို့",
   dayTogether: "အမှတ်တရ နေ့လေးတစ်နေ့",
   skipOpening: "ဖိတ်စာသို့ တိုက်ရိုက်သွားရန်",
@@ -386,6 +437,7 @@ function setLanguage(language) {
     element.innerHTML = copy[element.dataset.i18nHtml];
   });
   document.querySelectorAll("[data-i18n-aria]").forEach(element => element.setAttribute("aria-label", copy[element.dataset.i18nAria]));
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(element => element.setAttribute("placeholder", copy[element.dataset.i18nPlaceholder]));
   refreshMotionButton();
   document.querySelectorAll("[data-language]").forEach((button) => {
     const isActive = button.dataset.language === language;
@@ -404,6 +456,61 @@ document.querySelectorAll("[data-language]").forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.language));
 });
 
+function initializeRsvp() {
+  const form = document.querySelector(".rsvp-form");
+  const thanks = document.querySelector(".rsvp-thanks");
+  const status = form.querySelector(".rsvp-form__status");
+  const submit = form.querySelector(".rsvp-form__submit");
+  const guestDetails = form.querySelector(".rsvp-guest-details");
+  const guestCount = form.elements.namedItem("entry.1498135098");
+  const plusOne = form.elements.namedItem("entry.1424661284");
+  const acceptanceValue = "Joyfully accepts / ยินดีเข้าร่วมงาน";
+
+  form.querySelectorAll('input[name="entry.877086558"]').forEach(choice => {
+    choice.addEventListener("change", () => {
+      const attending = choice.value === acceptanceValue;
+      guestDetails.hidden = !attending;
+      plusOne.disabled = !attending;
+      if (attending && (!guestCount.value || guestCount.value === "0")) guestCount.value = "1";
+      if (!attending) guestCount.value = "0";
+    });
+  });
+
+  form.addEventListener("submit", async event => {
+    if (!("fetch" in window)) return;
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const copy = translations[document.documentElement.lang] || translations.en;
+    submit.disabled = true;
+    form.classList.add("is-submitting");
+    status.textContent = copy.sendingRsvp;
+    try {
+      await fetch(form.action, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) });
+      form.hidden = true;
+      thanks.hidden = false;
+      thanks.focus?.({ preventScroll: true });
+      thanks.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    } catch {
+      submit.disabled = false;
+      form.classList.remove("is-submitting");
+      status.textContent = copy.rsvpSendError;
+      status.focus?.({ preventScroll: true });
+    }
+  });
+
+  document.querySelector(".rsvp-again").addEventListener("click", () => {
+    form.reset();
+    guestDetails.hidden = false;
+    plusOne.disabled = false;
+    submit.disabled = false;
+    form.classList.remove("is-submitting");
+    status.textContent = "";
+    thanks.hidden = true;
+    form.hidden = false;
+    form.querySelector('input[name="entry.1459528256"]').focus({ preventScroll: true });
+  });
+}
+
 let savedLanguage = "en";
 try { savedLanguage = window.localStorage.getItem("invitation-language") || "en"; } catch { /* Storage is optional. */ }
 const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
@@ -411,5 +518,6 @@ setLanguage(requestedLanguage ?? savedLanguage);
 
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
+initializeRsvp();
 initializeInvitation();
 

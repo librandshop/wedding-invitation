@@ -48,3 +48,11 @@ Final generation prompt:
 ## Verification
 
 Chrome checks at 1440 × 1000, 390 × 844, 320 × 640 and 844 × 390 cover the full opening, centered card geometry, content bounds, all scroll reveals, horizontal overflow, replay, skip, Escape, reduced motion, pausing mid-opening and no-JavaScript fallback. A separate deterministic timeline test checks 900, 1700, 2800 and 3300 milliseconds: inside words remain hidden and both panels remain closed. At 5100 milliseconds the printing is visible and the card is centered. Screenshots were reviewed on desktop and phones, including Burmese and Thai.
+
+## Custom RSVP experience
+
+The generic Google Form page is no longer part of the guest journey. A custom reply card now lives inside the invitation and inherits its fine pink rules, serif typography, pill-shaped attendance choices and restrained heart details. It adapts after the guest accepts or declines, presents a localized confirmation in place, and allows another household response without leaving the letter.
+
+Responses continue to use the existing Google Form as their private collection backend. The live form's five exact entry fields are preserved: guest name, attendance, party size, plus-one name and dietary requirements. The interface and confirmation copy are fully translated in English, Thai and Burmese. Native browser validation, keyboard focus, an accessible live status and a no-JavaScript Google Form fallback are retained.
+
+Automated checks intercept the submission before it reaches Google, then verify the exact encoded field names and values, attendance-dependent controls, translated placeholders, reset flow, confirmation positioning and layout at desktop, phone and 320-pixel widths. No test response is added to the couple's response sheet.

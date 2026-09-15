@@ -24,7 +24,7 @@
     <meta name="theme-color" content="#fffaf8" />
     <link rel="preload" as="image" href="assets/jasmine-vine.webp" />
     <link rel="stylesheet" href="styles.css?v=20260915-buttons-1" />
-    <link rel="stylesheet" href="letter.css?v=20260915-heirloom-1" />
+    <link rel="stylesheet" href="letter.css?v=20260915-rsvp-1" />
   </head>
   <body class="letter-page">
     <div class="reading-progress" aria-hidden="true"></div>
@@ -229,8 +229,54 @@
             <p class="eyebrow" data-i18n="rsvpEyebrow">Kindly reply</p>
             <h2 id="rsvp-title" data-i18n="rsvpTitle">Will you celebrate with us?</h2>
             <p data-i18n="rsvpCopy">Please let us know whether you can join us by completing our RSVP form.</p>
-            <a class="button button--primary" href="https://forms.gle/t9pPc5BuD8Esa8QF6" target="_blank" rel="noopener" data-i18n="rsvpButton">RSVP now</a>
+            <form class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfQEx_mFsLqq-FIHfgORhTmI4uzyCuoJZSYhI8Kxs0oOXZnZw/formResponse" method="post">
+              <input type="hidden" name="fvv" value="1" />
+              <input type="hidden" name="pageHistory" value="0" />
+              <label class="rsvp-field rsvp-field--name">
+                <span data-i18n="guestName">Your name</span>
+                <input name="entry.1459528256" type="text" autocomplete="name" required data-i18n-placeholder="guestNamePlaceholder" placeholder="Your full name" />
+              </label>
+              <fieldset class="rsvp-attendance">
+                <legend data-i18n="willAttend">Will you be joining us?</legend>
+                <div class="rsvp-choice-row">
+                  <label class="rsvp-choice">
+                    <input type="radio" name="entry.877086558" value="Joyfully accepts / ยินดีเข้าร่วมงาน" required />
+                    <span><i aria-hidden="true">♥</i><b data-i18n="joyfullyAccepts">Joyfully accepts</b></span>
+                  </label>
+                  <label class="rsvp-choice">
+                    <input type="radio" name="entry.877086558" value="Regretfully declines / ขออภัย ไม่สามารถเข้าร่วมงานได้" required />
+                    <span><i aria-hidden="true">♡</i><b data-i18n="regretfullyDeclines">Regretfully declines</b></span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="rsvp-guest-details">
+                <label class="rsvp-field">
+                  <span data-i18n="partySize">Guests attending, including you</span>
+                  <select name="entry.1498135098" required>
+                    <option value="" disabled selected data-i18n="chooseGuestCount">Choose</option>
+                    <option value="0">0</option><option value="1">1</option><option value="2">2</option>
+                  </select>
+                </label>
+                <label class="rsvp-field">
+                  <span data-i18n="plusOneName">Your plus-one's name</span>
+                  <input name="entry.1424661284" type="text" autocomplete="name" data-i18n-placeholder="optionalPlaceholder" placeholder="Optional" />
+                </label>
+              </div>
+              <label class="rsvp-field">
+                <span data-i18n="dietaryNeeds">Dietary requirements or allergies</span>
+                <textarea name="entry.649557088" rows="3" data-i18n-placeholder="dietaryPlaceholder" placeholder="Please tell us anything we should know"></textarea>
+              </label>
+              <p class="rsvp-form__status" tabindex="-1" aria-live="polite"></p>
+              <button class="button button--primary rsvp-form__submit" type="submit"><span data-i18n="sendRsvp">Send our RSVP</span><span aria-hidden="true">♥</span></button>
+            </form>
+            <div class="rsvp-thanks" hidden tabindex="-1" aria-live="polite">
+              <span aria-hidden="true">♥</span>
+              <h3 data-i18n="rsvpThanksTitle">Thank you, dear guest</h3>
+              <p data-i18n="rsvpThanksCopy">Your reply has been received. We cannot wait to celebrate with you.</p>
+              <button class="rsvp-again" type="button" data-i18n="sendAnotherRsvp">Send another response</button>
+            </div>
             <p class="rsvp__note" data-i18n="rsvpNote">Please reply by 30 September 2026</p>
+            <noscript><p><a href="https://forms.gle/t9pPc5BuD8Esa8QF6" target="_blank" rel="noopener">Open RSVP form</a></p></noscript>
           </div>
         </div>
       </section>
@@ -243,7 +289,7 @@
       <button class="replay-button" type="button" data-i18n="replay" hidden>Open the envelope again</button>
     </footer>
     <button class="motion-toggle" type="button" aria-pressed="false" hidden><span class="motion-toggle__icon" aria-hidden="true">Ⅱ</span><span class="motion-toggle__label">Pause motion</span></button>
-    <script src="script.js?v=20260915-heirloom-1"></script>
+    <script src="script.js?v=20260915-rsvp-1"></script>
   </body>
 </html>
 
