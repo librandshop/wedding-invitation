@@ -1,6 +1,6 @@
 :root {
-  --paper:#fffdfb; --blush:#faf0f0; --pink:#edc6ce; --rose:#ac6b7a;
-  --ink:#64494d; --soft:#806a6d; --line:#e7d2d3; --ease:cubic-bezier(.2,.7,.2,1);
+  --paper:#fffdfd; --blush:#fcf1f5; --pink:#f0c7d7; --rose:#ad6680;
+  --ink:#62474f; --soft:#806a73; --line:#ecd7df; --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:40px}
@@ -46,15 +46,98 @@ h2{font-size:clamp(42px,5vw,68px);letter-spacing:-.035em;line-height:1.07}
 .envelope__seal>span{font:500 28px/1 "Cormorant Garamond",Georgia,serif;letter-spacing:-.07em;text-shadow:0 1px 1px #986779}
 .envelope__seal em{font-size:.7em}
 .invitation-intro__prompt{color:var(--soft);font:italic 23px/1.5 "Cormorant Garamond",Georgia,serif;margin-bottom:17px}
-.invitation-opening .envelope__seal{animation:unseal .4s ease forwards}
-.invitation-opening .envelope__flap{animation:unfold .85s var(--ease) .15s forwards}
-.invitation-opening .envelope__letter{animation:lift-letter 1.1s var(--ease) .7s forwards}
-.invitation-opening .invitation-intro{animation:cover-away .7s ease 1.7s forwards;pointer-events:none}
-.invitation-opening .opening-heading,.invitation-opening .invitation-intro__prompt{transition:opacity .4s;opacity:0}
-@keyframes unseal{to{transform:translate(-50%,-50%) rotate(8deg) scale(1.25);opacity:0}}
-@keyframes unfold{to{transform:rotateX(180deg)}}
-@keyframes lift-letter{to{transform:translateY(-65%) rotate(-3deg)}}
-@keyframes cover-away{to{opacity:0;visibility:hidden}}
+/* A single 6.6-second sequence: untie, unseal, lift, unfold, and reveal. */
+.invitation-intro { --card-start-x:0px; --card-start-y:60px; --card-start-scale:.5; }
+.envelope { transform:rotate(-3deg); box-shadow:0 2px 0 #c995a4; }
+.envelope:hover { transform:rotate(-1deg) translateY(-7px); }
+.envelope__back { background:repeating-linear-gradient(90deg,#e6bac51a 0 1px,transparent 1px 4px),#e5b8c4; }
+.envelope__front { background:linear-gradient(145deg,#fae7eb,#e9c1cc); }
+.envelope__front::after { background:linear-gradient(0deg,#f0d2db,#fcf0f1); }
+.envelope__botanical { position:absolute;z-index:4;inset:0;overflow:hidden;pointer-events:none;opacity:.48; }
+.envelope__botanical img { position:absolute;width:56%;left:-8%;bottom:-11%;transform:rotate(-10deg); }
+.envelope__ribbon { position:absolute;z-index:4;top:calc(50% - 12px);width:50%;height:24px;background:linear-gradient(#f0d9ce,#fff0e5 26%,#dbc0b4 49%,#fceade 70%,#e2c5b9);border-block:1px solid #fff7edc9;box-shadow:0 2px 4px #97687525; }
+.envelope__ribbon--left { left:0;transform-origin:left; }
+.envelope__ribbon--right { right:0;transform-origin:right; }
+.envelope__seal { width:76px;height:76px;box-shadow:0 5px 9px #95607355,inset 0 0 0 3px #f1c2cf80; }
+.envelope__seal::after { content:"";position:absolute;inset:-8px;border:1px solid #b8788840;border-radius:50%;animation:seal-invite 3.6s ease-out infinite; }
+.opening-light { position:absolute;inset:-30%;pointer-events:none;background:linear-gradient(118deg,transparent 30%,#fffefaaf 44%,#fffaf233 55%,transparent 65%);transform:translateX(-30%);animation:daylight 16s ease-in-out infinite alternate; }
+.opening-skip { position:absolute;z-index:20;left:5%;top:30px;border:0;border-bottom:1px solid var(--line);background:#fffdfbdd;padding:8px 10px;font-size:10px;color:var(--soft); }
+.keepsake-stage { position:absolute;inset:0;z-index:6;display:grid;place-items:center;perspective:1600px;pointer-events:none;visibility:hidden; }
+.keepsake { position:relative;width:min(430px,78vw);height:min(570px,70svh);transform-style:preserve-3d; }
+.keepsake__inside { position:absolute;inset:0;background:repeating-linear-gradient(0deg,#b89b8710 0 1px,transparent 1px 4px),#fffdf9;border:1px solid #dec3bc;box-shadow:0 26px 70px #85576335;overflow:hidden; }
+.keepsake__inside::after { content:"";position:absolute;inset:13px;border:1px solid #cba49980;pointer-events:none; }
+.keepsake__flower { position:absolute;width:65%;pointer-events:none;opacity:.85; }
+.keepsake__flower--top { top:-5%;right:-24%;transform:rotate(170deg); }
+.keepsake__flower--bottom { bottom:-7%;left:-21%;transform:rotate(0deg); }
+.keepsake__words { position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;height:100%;padding:32px 24px; }
+.keepsake__words .botanical { width:90px;height:42px; }
+.keepsake__eyebrow { max-width:85%;font-size:8px;text-transform:uppercase;letter-spacing:.16em;line-height:1.8; }
+.keepsake__names { font:500 clamp(44px,6vw,72px)/1.3 "Cormorant Garamond",Georgia,serif;letter-spacing:-.05em;white-space:nowrap; }
+.keepsake__names em { color:#bb7e90;font-weight:400; }
+.keepsake__divider { width:55px;height:1px;background:#c5979e; }
+.keepsake__date { font:500 27px/1.3 "Cormorant Garamond",Georgia,serif; }
+.keepsake__year { font-size:7px;letter-spacing:.15em;text-transform:uppercase; }
+.keepsake__note { margin-top:16px;font:italic 22px/1.3 "Cormorant Garamond",Georgia,serif;color:var(--rose); }
+.keepsake__door { position:absolute;z-index:2;top:0;width:50.15%;height:100%;background:linear-gradient(90deg,#fffaf3,#fffefb 80%,#f0dfd7);border:1px solid #dbc0b6;backface-visibility:hidden;overflow:hidden; }
+.keepsake__door::after { content:"";position:absolute;inset:12px;border:1px solid #d3b09d90; }
+.keepsake__door--left { left:0;transform-origin:left center; }
+.keepsake__door--right { right:0;transform-origin:right center;background:linear-gradient(90deg,#eddbd3,#fffcf8 12%,#fffaf5); }
+.keepsake__door img { position:absolute;width:220%;max-width:none;bottom:-4%;left:-52%;transform:rotate(-35deg);opacity:.88; }
+.keepsake__door--right img { top:-4%;bottom:auto;left:-67%;transform:rotate(145deg); }
+.keepsake__band { position:absolute;z-index:3;top:calc(50% - 35px);left:-2%;width:104%;height:70px;display:grid;place-items:center;background:linear-gradient(#f6e4e2e6,#fff6eff2 45%,#efdad6ed);border-block:1px solid #d4a995;box-shadow:0 3px 8px #83586616; }
+.keepsake__band span { font:500 34px/1 "Cormorant Garamond",Georgia,serif;color:#a06c6c;letter-spacing:-.07em; }
+.keepsake__band em { font-size:.7em; }
+.opening-petals { position:absolute;inset:0;z-index:8;pointer-events:none;overflow:hidden; }
+.opening-petals i { position:absolute;top:45%;left:50%;width:12px;height:18px;border-radius:75% 15% 75% 25%;background:radial-gradient(at 20% 15%,#fff1f1,#dca4b4);opacity:0; }
+.opening-petals i:nth-child(3n) { width:8px;height:13px; }
+.invitation-opening .envelope { pointer-events:none;animation:envelope-away 2.3s var(--ease) .8s forwards; }
+.invitation-opening .envelope__seal { animation:seal-release .8s var(--ease) forwards; }
+.invitation-opening .envelope__seal::after { animation:none;opacity:0; }
+.invitation-opening .envelope__ribbon--left { animation:ribbon-left 1.2s var(--ease) .12s forwards; }
+.invitation-opening .envelope__ribbon--right { animation:ribbon-right 1.2s var(--ease) .2s forwards; }
+.invitation-opening .envelope__flap { animation:flap-unfold 1.15s var(--ease) .55s forwards; }
+.invitation-opening .envelope__letter { animation:letter-placeholder 1.4s var(--ease) .95s forwards; }
+.invitation-opening .envelope__botanical { animation:print-away .9s ease 1.4s forwards; }
+.invitation-opening .keepsake-stage { visibility:visible; }
+.invitation-opening .keepsake { animation:card-extract 1.8s var(--ease) 1.25s both,card-depart .8s var(--ease) 5.8s forwards; }
+.invitation-opening .keepsake__band { animation:band-release .8s var(--ease) 2.95s forwards; }
+.invitation-opening .keepsake__door--left { animation:door-left 1.65s var(--ease) 3.15s forwards; }
+.invitation-opening .keepsake__door--right { animation:door-right 1.65s var(--ease) 3.32s forwards; }
+.invitation-opening .keepsake__words > * { animation:keepsake-ink 1.1s var(--ease) both;animation-delay:calc(3.7s + var(--ink-order,0) * .1s); }
+.invitation-opening .keepsake__words .botanical { stroke-dashoffset:0; }
+.invitation-opening .opening-petals i { animation:petal-celebration 3.6s ease-out both;animation-delay:calc(3.35s + var(--petal-order,0) * .045s); }
+.invitation-opening .opening-heading,.invitation-opening .invitation-intro__prompt { transition:opacity .4s,translate .6s;opacity:0;translate:0 -12px; }
+.invitation-opening .cover-floral { animation:florals-part 2.2s var(--ease) 1.8s forwards; }
+.invitation-opening .invitation-intro { animation:cover-dissolve .8s ease 5.8s forwards; }
+@keyframes seal-invite { 0%,70%,100% { opacity:0;scale:1; } 12% { opacity:.7; } 48% { opacity:0;scale:1.45; } }
+@keyframes daylight { to { transform:translateX(20%);opacity:.6; } }
+@keyframes seal-release { 40% { transform:translate(-50%,-65%) rotate(7deg) scale(1.2); } to { transform:translate(-15%,95%) rotate(30deg) scale(.9);opacity:0; } }
+@keyframes ribbon-left { to { transform:translate(-45%,80%) rotate(16deg);opacity:0; } }
+@keyframes ribbon-right { to { transform:translate(45%,100%) rotate(-19deg);opacity:0; } }
+@keyframes flap-unfold { to { transform:rotateX(180deg); } }
+@keyframes letter-placeholder { 45% { opacity:1;transform:translateY(-22%); } to { transform:translateY(-40%);opacity:0; } }
+@keyframes envelope-away { 50% { transform:translateY(15%) rotate(0deg);opacity:1; } to { transform:translateY(65%) rotate(5deg) scale(.88);opacity:0; } }
+@keyframes print-away { to { opacity:0; } }
+@keyframes card-extract {
+  0% { opacity:0;transform:translate(var(--card-start-x),var(--card-start-y)) rotate(-90deg) scale(var(--card-start-scale)); }
+  16% { opacity:1; }
+  50% { transform:translate(0,-50px) rotate(-32deg) scale(.72); }
+  100% { opacity:1;transform:translate(0,0) rotate(0) scale(1); }
+}
+@keyframes band-release { to { transform:translateY(65px) rotate(8deg);opacity:0; } }
+@keyframes door-left { 85% { opacity:1; } to { transform:rotateY(-155deg);opacity:0; } }
+@keyframes door-right { 85% { opacity:1; } to { transform:rotateY(155deg);opacity:0; } }
+@keyframes keepsake-ink { from { opacity:0;translate:0 10px; } to { opacity:1;translate:0 0; } }
+@keyframes petal-celebration {
+  0% { opacity:0;transform:translate(0,0) rotate(0) scale(.6); }
+  15% { opacity:.65; }
+  60% { opacity:.45; }
+  100% { opacity:0;transform:translate(var(--petal-x),var(--petal-y)) rotate(var(--petal-turn)) scale(1); }
+}
+@keyframes florals-part { to { translate:var(--floral-out, -35px) 10px;opacity:.4; } }
+.cover-floral--right { --floral-out:35px; }
+@keyframes card-depart { to { transform:scale(1.1);opacity:0; } }
+@keyframes cover-dissolve { to { opacity:0;visibility:hidden; } }
 
 /* An invitation card framed by flowers. */
 .site-header{position:absolute;top:0;left:0;z-index:8;display:flex;align-items:center;justify-content:space-between;width:100%;padding:25px 5%}
@@ -199,6 +282,78 @@ footer small{color:var(--soft);font-size:8px;letter-spacing:.15em;text-transform
 .motion-paused [data-reveal],.motion-paused .hero__copy-inner>*,.motion-paused h1 span,.motion-paused h1 em{transform:none!important;filter:none!important;transition:none!important}
 .motion-paused .botanical,.motion-paused .line-icon{stroke-dashoffset:0!important}
 .motion-paused .petals{display:none}
+
+/* The main invitation unfolds with its own sequence and scroll depth. */
+.hero__floral img { translate:0 var(--flower-depth,0px); }
+.venue__keepsake { transform:translateY(var(--paper-lift,0px)) rotate(var(--paper-angle,-7deg)); }
+.hero__arch::after { opacity:.5; }
+.js-motion.invitation-ready .hero__arch { animation:hero-paper 1.7s var(--ease) both; }
+.js-motion.invitation-ready .hero__arch::after { animation:frame-draw 2s var(--ease) .6s both; }
+.js-motion.invitation-ready .hero__floral--left { animation:flower-left 2s var(--ease) .15s both; }
+.js-motion.invitation-ready .hero__floral--right { animation:flower-right 2.2s var(--ease) .35s both; }
+.js-motion.invitation-ready .hero__rule::before,.js-motion.invitation-ready .hero__rule::after { animation:rule-grow 1.5s var(--ease) 1.1s both; }
+.js-motion [data-reveal="card"] { transform:perspective(1100px) translateY(55px) rotateX(12deg) scale(.96);transform-origin:center bottom;transition-duration:1.1s,1.5s; }
+.js-motion [data-reveal="card"].is-visible { transform:perspective(1100px) translateY(0) rotateX(0) scale(1); }
+.js-motion .schedule-card.is-visible::before,.js-motion .rsvp__frame.is-visible::after { animation:frame-draw 1.6s var(--ease) .3s both; }
+.js-motion .intro__copy.is-visible .botanical { animation:ink-draw 2.8s ease .25s forwards,branch-settle 2s var(--ease) both; }
+.js-motion .rsvp__frame.is-visible .rsvp__art>img { animation:rsvp-bloom 2.2s var(--ease) both; }
+.js-motion .rsvp__frame.is-visible .rsvp__art>span { animation:monogram-arrive 1.5s var(--ease) .4s both; }
+.countdown__grid { perspective:1000px; }
+.js-motion .countdown__grid>[data-reveal] { transform:translateY(26px) rotateX(-35deg);transform-origin:center bottom; }
+.js-motion .countdown__grid>[data-reveal].is-visible { transform:none; }
+.button:active { transform:translateY(1px) scale(.97); }
+.envelope__ribbon { background:linear-gradient(#f3d9e4,#fff4f8 26%,#dab1c2 49%,#fce6ef 70%,#e5bfce);border-color:#fff5f9; }
+.keepsake__inside { background:#fffdfd;border-color:#e8cbd7; }
+.keepsake__inside::after { border-color:#e8cbd7; }
+.keepsake__door { background:linear-gradient(90deg,#fff8fb,#fff 80%,#f4e0e9);border-color:#e6c8d4; }
+.keepsake__door--right { background:linear-gradient(90deg,#efdae3,#fffcfe 12%,#fff9fc); }
+.keepsake__door::after { border-color:#e8cbd7; }
+.keepsake__band { background:linear-gradient(#f7e4ede6,#fff8fcf2 45%,#f1dce7ed);border-color:#e5bfce; }
+.keepsake__flower { opacity:1; }
+.envelope__botanical { opacity:.7; }
+@keyframes hero-paper { from { opacity:0;transform:translate(-50%,35px) scale(.94); } to { opacity:1;transform:translate(-50%,0) scale(1); } }
+@keyframes frame-draw { from { clip-path:inset(0 0 100% 0); } to { clip-path:inset(0); } }
+@keyframes flower-left { from { opacity:0;translate:-55px 25px; } to { opacity:1;translate:0 0; } }
+@keyframes flower-right { from { opacity:0;translate:55px -20px; } to { opacity:1;translate:0 0; } }
+@keyframes rule-grow { from { scale:0 1; } to { scale:1 1; } }
+@keyframes branch-settle { from { rotate:-10deg; } to { rotate:0deg; } }
+@keyframes rsvp-bloom { from { opacity:0;translate:-30px 25px;scale:.85; } to { opacity:1;translate:0 0;scale:1; } }
+@keyframes monogram-arrive { from { opacity:0;scale:.85; } to { opacity:1;scale:1; } }
+.motion-paused .hero__arch { animation:none!important; }
+.motion-paused .hero__floral,.motion-paused .rsvp__art>img,.motion-paused .rsvp__art>span { translate:0 0!important;scale:1!important;opacity:1!important; }
+.motion-paused .hero__arch::after,.motion-paused .schedule-card::before,.motion-paused .rsvp__frame::after { clip-path:none!important; }
+.motion-paused .hero__rule::before,.motion-paused .hero__rule::after { scale:1!important; }
+.motion-paused .hero__floral img { translate:0 0; }
+.motion-paused .venue__keepsake { transform:rotate(-7deg); }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .js-motion .schedule-card.is-visible:hover { transform:perspective(1100px) translateY(-7px) rotateX(0) scale(1.015);box-shadow:0 16px 35px #b27b9015;transition-delay:0s; }
+}
+@media (max-width:700px) {
+  .keepsake { width:min(340px,80vw);height:min(530px,71svh); }
+  .keepsake__words { gap:12px;padding:24px 18px; }
+  .keepsake__words .botanical { width:75px;height:34px; }
+  .keepsake__eyebrow { font-size:7px; }
+  .keepsake__date { font-size:23px; }
+  .keepsake__note { font-size:20px;margin-top:8px; }
+  .opening-skip { top:auto;bottom:22px;left:22px;font-size:9px;max-width:48%; }
+}
+html[lang="th"] .keepsake__date { font:500 21px/1.7 "Noto Serif Thai",serif; }
+html[lang="th"] .keepsake__note { font:400 16px/1.7 "Noto Serif Thai",serif; }
+html[lang="my"] .keepsake__words { gap:10px; }
+html[lang="my"] .keepsake__eyebrow { font-size:10px;letter-spacing:0; }
+html[lang="my"] .keepsake__date { font:500 20px/1.8 "Noto Serif Myanmar",serif; }
+html[lang="my"] .keepsake__year { font-size:11px;letter-spacing:0; }
+html[lang="my"] .keepsake__note { font:400 13px/1.8 "Noto Sans Myanmar",sans-serif; }
+@media(max-height:560px) and (orientation:landscape) {
+  .keepsake { width:340px;height:80svh; }
+  .keepsake__words { gap:6px;padding:14px; }
+  .keepsake__words .botanical { display:none; }
+  .keepsake__names { font-size:48px;line-height:1.15; }
+  .keepsake__date { font-size:22px; }
+  .keepsake__note { font-size:17px;margin-top:6px; }
+  html[lang="my"] .keepsake__words { gap:6px; }
+  html[lang="my"] .keepsake__date { font-size:16px; }
+}
 
 /* Thai typography. */
 html[lang="th"] body{font-family:"Noto Sans Thai",Tahoma,sans-serif}

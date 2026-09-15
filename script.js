@@ -6,10 +6,14 @@ const pageContent = [...document.querySelectorAll(".site-header, main, footer")]
 let motionPaused = motionPreference.matches;
 let openingTimer;
 let revealObserver;
+const openingSkip = document.querySelector(".opening-skip");
+const openingDuration = 6600;
 
 function finishOpening() {
   window.clearTimeout(openingTimer);
   invitationIntro.hidden = true;
+  openingSkip.hidden = true;
+  openInvitation.removeAttribute("aria-disabled");
   document.body.classList.remove("invitation-open", "invitation-opening");
   pageContent.forEach(element => { element.inert = false; });
   document.body.classList.add("invitation-ready");
@@ -20,14 +24,26 @@ function finishOpening() {
 function revealInvitation() {
   if (invitationIntro.hidden || document.body.classList.contains("invitation-opening")) return;
   if (motionPaused) { finishOpening(); return; }
+  // Match the folded card's starting position to the real envelope at any size.
+  const envelopeBounds = openInvitation.getBoundingClientRect();
+  const cardBounds = document.querySelector(".keepsake").getBoundingClientRect();
+  const foldedScale = Math.min(envelopeBounds.width * .8 / cardBounds.height, envelopeBounds.height * .8 / cardBounds.width);
+  invitationIntro.style.setProperty("--card-start-x", `${envelopeBounds.left + envelopeBounds.width / 2 - window.innerWidth / 2}px`);
+  invitationIntro.style.setProperty("--card-start-y", `${envelopeBounds.top + envelopeBounds.height / 2 - window.innerHeight / 2}px`);
+  invitationIntro.style.setProperty("--card-start-scale", foldedScale);
+  openInvitation.setAttribute("aria-disabled", "true");
+  openingSkip.hidden = false;
+  openingSkip.focus({ preventScroll: true });
   document.body.classList.add("invitation-opening");
-  openingTimer = window.setTimeout(finishOpening, 2450);
+  openingTimer = window.setTimeout(finishOpening, openingDuration);
 }
 
 function showEnvelope() {
   window.clearTimeout(openingTimer);
   revealObserver?.disconnect();
   document.body.classList.remove("invitation-ready", "invitation-opening");
+  openingSkip.hidden = true;
+  openInvitation.removeAttribute("aria-disabled");
   window.scrollTo({ top: 0, behavior: "instant" });
   invitationIntro.hidden = false;
   document.body.classList.add("invitation-open");
@@ -70,18 +86,27 @@ function setMotionPaused(paused) {
 
 function initializeInvitation() {
   document.body.classList.add("js-motion");
+  document.querySelectorAll(".keepsake__words > *").forEach((element, index) => element.style.setProperty("--ink-order", index));
+  document.querySelectorAll(".opening-petals i").forEach((petal, index) => {
+    const angle = index * Math.PI * 2 / 12;
+    petal.style.setProperty("--petal-order", index);
+    petal.style.setProperty("--petal-x", `${Math.cos(angle) * Math.min(innerWidth * .48, 400)}px`);
+    petal.style.setProperty("--petal-y", `${Math.sin(angle) * innerHeight * .36 + innerHeight * .2}px`);
+    petal.style.setProperty("--petal-turn", `${120 + index * 37}deg`);
+  });
   document.querySelectorAll(".hero__copy-inner > *").forEach((element, index) => element.style.setProperty("--order", index));
   const groups = [
     ".savebar__copy, .calendar-actions", ".intro__heading, .intro__copy",
     ".schedule > .container > .eyebrow, .schedule h2", ".schedule-card",
     ".venue__visual, .venue__copy", ".countdown .eyebrow, .countdown h2",
-    ".countdown__grid > div", ".rsvp__frame", "footer > *"
+    ".countdown__grid > div", ".rsvp__frame", ".rsvp__content > *", "footer > *"
   ];
   groups.forEach(selector => document.querySelectorAll(selector).forEach((element, index) => {
     element.dataset.reveal = element.matches(".schedule-card, .rsvp__frame") ? "card" : element.matches(".venue__visual") ? "art" : "text";
     element.style.setProperty("--delay", `${Math.min(index * 130, 390)}ms`);
   }));
   openInvitation.addEventListener("click", revealInvitation);
+  openingSkip.addEventListener("click", finishOpening);
   document.querySelector(".replay-button").hidden = false;
   document.querySelector(".replay-button").addEventListener("click", showEnvelope);
   motionButton.hidden = false;
@@ -92,18 +117,34 @@ function initializeInvitation() {
     if (invitationIntro.hidden) return;
     if (event.key === "Escape") { event.preventDefault(); finishOpening(); }
     if (event.key === "Tab") {
-      const focusable = [...invitationIntro.querySelectorAll("button"), motionButton];
+      const focusable = [...invitationIntro.querySelectorAll("button"), motionButton].filter(button => !button.hidden && button.getAttribute("aria-disabled") !== "true");
       const index = focusable.indexOf(document.activeElement);
       event.preventDefault();
       focusable[(index + (event.shiftKey ? -1 : 1) + focusable.length) % focusable.length].focus();
     }
   });
-  document.addEventListener("visibilitychange", () => document.body.classList.toggle("page-hidden", document.hidden));
+  document.addEventListener("visibilitychange", () => {
+    document.body.classList.toggle("page-hidden", document.hidden);
+    // Avoid resuming halfway through a ceremony after switching apps.
+    if (document.hidden && document.body.classList.contains("invitation-opening")) finishOpening();
+  });
   const progress = document.querySelector(".reading-progress");
   let scrollFrame = false;
+  const hero = document.querySelector(".hero");
+  const venueArt = document.querySelector(".venue__visual");
   function updateProgress() {
     const distance = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.transform = `scaleX(${distance > 0 ? Math.min(1, window.scrollY / distance) : 0})`;
+    if (!motionPaused && invitationIntro.hidden) {
+      const heroBounds = hero.getBoundingClientRect();
+      if (heroBounds.bottom > 0) hero.style.setProperty("--flower-depth", `${Math.min(window.scrollY * .09, 70)}px`);
+      const artBounds = venueArt.getBoundingClientRect();
+      if (artBounds.bottom > 0 && artBounds.top < innerHeight) {
+        const travel = Math.max(0, Math.min(1, (innerHeight - artBounds.top) / (innerHeight + artBounds.height)));
+        venueArt.style.setProperty("--paper-angle", `${-10 + travel * 9}deg`);
+        venueArt.style.setProperty("--paper-lift", `${16 - travel * 32}px`);
+      }
+    }
     scrollFrame = false;
   }
   window.addEventListener("scroll", () => {
@@ -208,6 +249,8 @@ const translations = {
 };
 
 Object.assign(translations.en, {
+  skipOpening: "Skip to invitation",
+  letterNote: "With love, always",
   chooseLanguage: "Choose language",
   openingEyebrow: "A little envelope. A lifetime of love.",
   openingTitle: "Something beautiful awaits",
@@ -220,6 +263,8 @@ Object.assign(translations.en, {
   resumeMotion: "Resume motion",
 });
 Object.assign(translations.th, {
+  skipOpening: "ข้ามไปยังการ์ดเชิญ",
+  letterNote: "ด้วยรักเสมอ",
   chooseLanguage: "เลือกภาษา",
   openingEyebrow: "ซองเล็ก ๆ กับความรักตลอดไป",
   openingTitle: "ความงดงามกำลังรอคุณอยู่",
@@ -233,6 +278,8 @@ Object.assign(translations.th, {
 });
 
 translations.my = {
+  skipOpening: "ဖိတ်စာသို့ တိုက်ရိုက်သွားရန်",
+  letterNote: "ချစ်ခြင်းမေတ္တာဖြင့် အမြဲတမ်း",
   pageTitle: "Ye နှင့် Nang တို့၏ မင်္ဂလာဖိတ်စာ",
   pageDescription: "Ye Moe Myint နှင့် Nang Htet Htet Aung တို့၏ မင်္ဂလာဖိတ်စာ။",
   chooseLanguage: "ဘာသာစကား ရွေးချယ်ရန်",
