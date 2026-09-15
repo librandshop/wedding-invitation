@@ -227,8 +227,6 @@ h1:focus{outline:none}h1 em{font-size:.68em;font-weight:400;color:#c68c9d}
 .savebar__copy .savebar__eyebrow{font:600 8px/1.8 "Manrope",Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#986976}
 .calendar-actions{display:flex;gap:24px;flex-wrap:wrap}
 .calendar-actions a{font-size:9px;text-underline-offset:6px;text-decoration-color:#c19aa4}
-.calendar-actions a::after{content:" ↗";color:var(--rose)}
-.calendar-actions a:last-child::after{content:" ↓"}
 .intro{min-height:450px}
 .intro__layout{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;position:relative;z-index:1}
 .intro__heading{padding-left:75px}.intro__heading h2{max-width:360px}
@@ -630,4 +628,45 @@ footer { background:#fff5f9;padding-top:25px; }
 .motion-paused .schedule-card::after { scale:1!important; }
 .motion-paused .venue-route__line { stroke-dashoffset:0!important; }
 .motion-paused .rsvp__frame::before { transform:none!important; }
+
+/* Clearly actionable calendar and directions controls, in the stationery palette. */
+.savebar__inner { gap:32px;padding-block:32px; }
+.savebar__copy { flex:0 1 330px;min-width:0; }
+.calendar-actions { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;flex:1;max-width:640px; }
+.invitation-action,.calendar-actions .invitation-action {
+  display:inline-flex;align-items:center;gap:12px;min-height:68px;max-width:100%;
+  padding:14px 18px;border:1px solid #d6a5b9;border-radius:20px;
+  background:linear-gradient(135deg,#f8e5ee,#f1d5e2);color:#704358;
+  box-shadow:inset 0 1px 0 #ffffffd9,0 5px 14px #a5688110;
+  font:600 12px/1.6 "Manrope",Arial,sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease;
+}
+.calendar-actions .invitation-action--ivory { background:linear-gradient(135deg,#fff,#fff8fb); }
+.calendar-actions .invitation-action::after { content:none; }
+.invitation-action__label { flex:1;min-width:0;text-align:left;overflow-wrap:anywhere; }
+.invitation-action__icon { display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:#ffffffa6;border:1px solid #e3bfce;color:#9c5d79; }
+.invitation-action svg { display:block;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round; }
+.invitation-action .invitation-action__arrow { flex:0 0 16px;width:16px;height:16px;transition:transform .25s ease; }
+.invitation-action--maps { min-width:280px;width:fit-content;padding-inline:20px; }
+.invitation-action:focus-visible { outline:2px solid #91516e;outline-offset:4px;box-shadow:0 0 0 5px #fff; }
+html[lang="th"] .invitation-action { font-family:"Noto Sans Thai",Tahoma,sans-serif;font-size:13px;line-height:1.7; }
+html[lang="my"] .invitation-action { font-family:"Noto Sans Myanmar","Myanmar Text",sans-serif;font-size:12px;line-height:2; }
+@media(hover:hover) {
+  .invitation-action:hover,.calendar-actions .invitation-action:hover { border-color:#ae718c;background:#edcfdd;box-shadow:inset 0 1px 0 #fff,0 9px 22px #a5688126; }
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference) {
+  .invitation-action:hover { transform:translateY(-3px); }
+  .invitation-action:hover .invitation-action__arrow { transform:translate(2px,-1px); }
+}
+.invitation-action:active { background:#e9c4d6; }
+@media(max-width:1000px) {
+  .savebar__inner { flex-direction:column;align-items:center;gap:24px; }
+  .savebar__copy { flex:auto;justify-content:center;text-align:center; }
+  .calendar-actions { flex:auto;width:100%; }
+}
+@media(max-width:600px) {
+  .calendar-actions { grid-template-columns:1fr;max-width:380px;gap:12px; }
+  .invitation-action--maps { width:100%;min-width:0;max-width:360px;margin-inline:auto; }
+}
+.motion-paused .invitation-action,.motion-paused .invitation-action__arrow { transform:none!important;transition:none!important; }
 

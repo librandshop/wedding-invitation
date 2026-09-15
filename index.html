@@ -23,7 +23,7 @@
     />
     <meta name="theme-color" content="#fffaf8" />
     <link rel="preload" as="image" href="assets/jasmine-vine.webp" />
-    <link rel="stylesheet" href="styles.css?v=20260915-entwined-1" />
+    <link rel="stylesheet" href="styles.css?v=20260915-buttons-1" />
   </head>
   <body>
     <div class="reading-progress" aria-hidden="true"></div>
@@ -123,8 +123,16 @@
             </div>
           </div>
           <div class="calendar-actions">
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Ye%20%26%20Nang%27s%20Wedding&amp;dates=20261108%2F20261109&amp;details=Ye%20Moe%20Myint%20and%20Nang%20Htet%20Htet%20Aung%20are%20getting%20married.%20See%20the%20invitation%20for%20venue%20details%20and%20directions.&amp;location=https%3A%2F%2Flibrandshop.github.io%2Fye-and-nang%2F" target="_blank" rel="noopener" data-i18n="saveDate">Add to Google Calendar</a>
-            <a href="ye-nang-wedding.ics" download="ye-nang-wedding.ics" data-i18n="calendarFile">Apple Calendar &amp; Outlook</a>
+            <a class="invitation-action" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Ye%20%26%20Nang%27s%20Wedding&amp;dates=20261108%2F20261109&amp;details=Ye%20Moe%20Myint%20and%20Nang%20Htet%20Htet%20Aung%20are%20getting%20married.%20See%20the%20invitation%20for%20venue%20details%20and%20directions.&amp;location=https%3A%2F%2Flibrandshop.github.io%2Fye-and-nang%2F" target="_blank" rel="noopener">
+              <span class="invitation-action__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18m-9 3v5m-2.5-2.5h5"/></svg></span>
+              <span class="invitation-action__label" data-i18n="saveDate">Add to Google Calendar</span>
+              <svg class="invitation-action__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg>
+            </a>
+            <a class="invitation-action invitation-action--ivory" href="ye-nang-wedding.ics" download="ye-nang-wedding.ics">
+              <span class="invitation-action__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18m-9 3v5m-2.5-2.5L12 18l2.5-2.5"/></svg></span>
+              <span class="invitation-action__label" data-i18n="calendarFile">Apple Calendar &amp; Outlook</span>
+              <svg class="invitation-action__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v12m-5-5 5 5 5-5M5 19v2h14v-2"/></svg>
+            </a>
           </div>
         </div>
       </section>
@@ -189,8 +197,10 @@
             <p class="eyebrow" data-i18n="venueEyebrow">Where to find us</p>
             <h2 id="venue-title" data-i18n="venueTitle">Our wedding venue</h2>
             <p data-i18n-html="venueCopy">Tap below to see the location and get directions<br />on Google Maps.</p>
-            <a class="text-link" href="https://maps.app.goo.gl/vTDBF3szrC5VXmnKA" target="_blank" rel="noreferrer">
-              <span data-i18n="openMaps">Open in Google Maps</span> <span aria-hidden="true">&rarr;</span>
+            <a class="invitation-action invitation-action--maps" href="https://maps.app.goo.gl/vTDBF3szrC5VXmnKA" target="_blank" rel="noreferrer">
+              <span class="invitation-action__icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <span class="invitation-action__label" data-i18n="openMaps">Open in Google Maps</span>
+              <svg class="invitation-action__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg>
             </a>
           </div>
         </div>
