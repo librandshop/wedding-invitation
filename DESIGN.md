@@ -1,4 +1,4 @@
-# Entwined invitation design
+# A personal wedding letter
 
 White and floral-pink stationery with oversized, asymmetric italic name lettering. Small jasmine and blush sweet-pea vines weave around the Y and the end of Nang; fine animated stems pass behind and in front of the letters. There are no large standalone bouquets. Full names remain beneath the centerpiece, and Y & N remains the seal monogram.
 
@@ -19,11 +19,12 @@ Geometry is measured from the actual envelope and untransformed card dimensions 
 ## Main-page motion and layout
 
 - Ye and Nang inscribe separately; the ampersand settles between them; fine stems trace around the names and small flowering vines grow into place, then gently sway.
-- The personal message is a centered editorial note, with larger heading treatment and animated typography.
-- Ceremony, reception and dinner connect along a drawing timeline: horizontal on desktop, vertical on phones. Illustrated icons draw and milestones arrive in order.
-- The venue is a layered postcard with a drawing route and a landing location pin. This is a decorative route, not a geographic map; the real Google Maps link is unchanged.
-- Countdown numbers sit on individual folded-paper tiles and animate when they change in view.
-- The RSVP is a folded-corner reply note with a wax monogram seal, staged content and a pill-shaped action button.
+- The main page is one continuous white, fine-bordered letter on blush paper. A small code-native satin bow crowns the arched stationery; a matching bow introduces the reply. The envelope markup and opening functions are unchanged.
+- A personal salutation and signed note precede the calendar actions. English copy uses softer serif typography, with appropriate Thai and Burmese font shaping and line heights.
+- Ceremony, reception and dinner form a centered wedding program, without business-style numbering, cards or timeline. Unconfirmed times and the shared details notice remain explicit.
+- Venue directions are a simple centered invitation detail; the decorative route graphic has been removed. Both calendar buttons and the Maps button retain their prominent themed design and original destinations.
+- The countdown is printed directly on the paper, without dashboard tiles. The RSVP closes the letter rather than repeating a call to action in the hero.
+- Slow ink fades, drawn ornamental dividers, a revealing signature and gentle ribbon movement replace presentation-style card tilts. `letter.css` scopes the redesign to the main invitation without changing envelope styles.
 - Motion can be paused; system reduced-motion preferences are honored by default. There is no automatic music.
 
 ## Artwork

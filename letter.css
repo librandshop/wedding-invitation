@@ -1,0 +1,147 @@
+/* A continuous wedding letter. Deliberately scoped away from the loved envelope. */
+.letter-page { background:#f9edf2; }
+.letter-page .reading-progress { display:none; }
+.letter-page .site-header { top:22px;left:50%;transform:translateX(-50%);width:min(960px,100%);justify-content:flex-end;padding:0 28px; }
+.letter-page .site-header__brand,.letter-page .header-date { display:none; }
+.wedding-letter { position:relative;isolation:isolate;width:min(940px,calc(100% - 64px));margin:106px auto 0;background:#fffdfc;border-radius:440px 440px 3px 3px / 210px 210px 3px 3px;box-shadow:0 14px 80px #9d6a7b12; }
+.wedding-letter::before { content:"";position:absolute;z-index:-1;inset:16px;border:1px solid #ecd9e0;border-radius:inherit;pointer-events:none; }
+.wedding-letter .container { width:100%; }
+.wedding-letter .section { padding:66px 70px;background:none;border:0;text-align:center; }
+.wedding-letter h2 { font-size:clamp(42px,5vw,57px);font-style:italic;line-height:1.2;font-weight:500;letter-spacing:-.035em; }
+.wedding-letter .eyebrow { font:500 17px/1.7 "Cormorant Garamond",Georgia,serif;letter-spacing:.03em;text-transform:none;color:#9b6b7d;margin-bottom:13px; }
+.wedding-letter .hero { min-height:840px;padding:132px 50px 85px;background:none;border-radius:inherit;overflow:visible; }
+.wedding-letter .hero__arch { display:none; }
+.wedding-letter .hero__copy-inner { max-width:650px; }
+.wedding-letter .hero__invite { font-size:22px; }
+.wedding-letter .hero__full-names { font:500 16px/1.6 "Cormorant Garamond",serif;letter-spacing:.02em;text-transform:none; }
+.wedding-letter .hero__date { font-size:31px;line-height:1.35; }
+.wedding-letter .hero__year { font:500 14px/1.6 "Cormorant Garamond",serif;letter-spacing:.08em;text-transform:none; }
+.wedding-letter .hero__rule { margin:26px auto 20px; }
+.wedding-letter .scroll-cue { bottom:12px;font:italic 16px/1.5 "Cormorant Garamond",serif;text-transform:none;letter-spacing:0;color:#9d7e8a; }
+.letter-bow { display:block;overflow:visible;pointer-events:none;width:105px;height:76px; }
+.letter-bow--hero { position:absolute;top:30px;left:calc(50% - 52.5px);transform-origin:center top; }
+.wedding-letter .intro { padding-top:45px;padding-bottom:38px;min-height:0; }
+.wedding-letter .intro__layout { max-width:570px; }
+.letter-salutation { font:italic 24px/1.6 "Cormorant Garamond",Georgia,serif;color:#a06d82;margin-bottom:24px; }
+.wedding-letter .intro__heading h2 { font-size:45px; }
+.wedding-letter .intro__copy .botanical { width:78px;height:35px;margin:23px auto; }
+.wedding-letter .intro__copy p { max-width:500px;font:400 25px/1.7 "Cormorant Garamond",Georgia,serif;color:#765d67; }
+.wedding-letter .intro__copy .letter-signature { margin:30px auto 0;font:italic 38px/1.2 "Cormorant Garamond",serif;color:#9d6c80; }
+.letter-signature em { font-size:.75em; }
+.wedding-letter .savebar { background:none;border:0;padding:15px 70px 38px; }
+.wedding-letter .savebar__inner { display:block;padding:28px 0; }
+.wedding-letter .savebar__copy { justify-content:center;text-align:center;margin-bottom:24px; }
+.wedding-letter .savebar__copy .savebar__eyebrow { font:italic 21px/1.6 "Cormorant Garamond",serif;letter-spacing:0;text-transform:none; }
+.wedding-letter .savebar__star { font-size:23px; }
+.wedding-letter .calendar-actions { width:100%;max-width:640px;margin:auto; }
+.love-divider { display:block;width:185px;height:54px;overflow:visible;fill:none;stroke:#c794a8;stroke-width:1;stroke-linecap:round;margin:0 auto 34px; }
+.wedding-letter .schedule { padding-top:20px; }
+.wedding-letter .schedule__grid { display:flex;flex-direction:column;gap:43px;max-width:400px;margin:40px auto 0;text-align:center; }
+.wedding-letter .schedule-card { padding:0;min-height:0;border:0;border-radius:0;background:none;box-shadow:none; }
+.wedding-letter .schedule-card::before,.wedding-letter .schedule-card::after { display:none; }
+.wedding-letter .schedule-card .line-icon { position:static;width:43px;height:43px;margin:0 auto 13px;stroke-width:.9; }
+.wedding-letter .schedule-card h3 { font:italic 36px/1.2 "Cormorant Garamond",serif;margin-bottom:8px; }
+.wedding-letter .schedule-card .schedule-card__time { font:400 17px/1.7 "Cormorant Garamond",serif;text-transform:none;letter-spacing:0;margin-bottom:0; }
+.program-note { font:italic 17px/1.7 "Cormorant Garamond",serif;color:#9e7a89;margin:34px auto 0; }
+.wedding-letter .venue { padding-top:25px;padding-bottom:60px; }
+.wedding-letter .venue__layout { display:block;max-width:560px; }
+.wedding-letter .venue__visual { height:auto;width:100%;margin:0 auto 26px; }
+.wedding-letter .venue__visual .botanical { width:100px;height:45px; }
+.wedding-letter .venue__copy { text-align:center; }
+.wedding-letter .venue__copy h2 { max-width:none;margin-bottom:22px; }
+.wedding-letter .venue__copy>p:not(.eyebrow) { font:400 22px/1.7 "Cormorant Garamond",serif;max-width:440px;margin:0 auto 27px; }
+.wedding-letter .countdown { padding-top:20px;padding-bottom:45px; }
+.wedding-letter .countdown h2 { margin-bottom:32px; }
+.wedding-letter .countdown__grid { max-width:510px;gap:0; }
+.wedding-letter .countdown__grid>div,.wedding-letter .countdown__grid>div:last-child { padding:0 8px;border:0;background:none;box-shadow:none;border-radius:0; }
+.wedding-letter .countdown__grid strong { font:italic 57px/1.1 "Cormorant Garamond",serif;color:#a16c81; }
+.wedding-letter .countdown__grid span { margin-top:9px;font:italic 18px/1.5 "Cormorant Garamond",serif;letter-spacing:0;text-transform:none; }
+.wedding-letter .rsvp { padding:70px 60px 95px; }
+.wedding-letter .rsvp__frame { width:min(640px,100%);background:none;border:0;box-shadow:none;min-height:0; }
+.wedding-letter .rsvp__frame::before,.wedding-letter .rsvp__frame::after { display:none; }
+.wedding-letter .rsvp__art { display:none; }
+.letter-bow--reply { width:125px;height:90px;margin:0 auto 15px; }
+.wedding-letter .rsvp__content { padding:18px 20px 0; }
+.wedding-letter .rsvp__content h2 { font-size:52px; }
+.wedding-letter .rsvp__content>p:not(.eyebrow) { font:400 22px/1.7 "Cormorant Garamond",serif;max-width:430px; }
+.wedding-letter .rsvp__content .rsvp__note { margin-top:22px;font:italic 17px/1.7 "Cormorant Garamond",serif!important;text-transform:none;letter-spacing:0; }
+.wedding-letter .rsvp .button { margin-top:3px;min-height:52px;padding-inline:42px; }
+.letter-page footer { width:min(940px,calc(100% - 64px));margin:0 auto 45px;padding:0 24px 65px;background:#fffdfc;box-shadow:0 22px 45px #9d6a7b12; }
+.letter-page footer .botanical { width:80px;height:35px; }
+.letter-page footer p { font-size:40px; }
+.letter-page footer small { font:400 15px/1.6 "Cormorant Garamond",serif;letter-spacing:.04em;text-transform:none; }
+
+/* Quiet ink and ribbon movements replace presentation-style tilts and lifts. */
+.js-motion .wedding-letter [data-reveal],.js-motion .wedding-letter [data-reveal="card"],.js-motion .wedding-letter [data-reveal="art"] { transform:translateY(12px);transition:opacity 1.65s ease,transform 1.9s var(--ease);transition-delay:var(--delay,0ms); }
+.js-motion .wedding-letter [data-reveal].is-visible { opacity:1;transform:none; }
+.js-motion .wedding-letter h2.is-visible,.js-motion .wedding-letter .intro__heading.is-visible h2 { animation:letter-ink 1.9s ease both; }
+.js-motion .wedding-letter .schedule-card.is-visible:hover { transform:none;box-shadow:none; }
+.js-motion .wedding-letter .countdown__grid>[data-reveal] { transform:translateY(9px); }
+.js-motion .wedding-letter .countdown__grid>.is-visible { transform:none; }
+.js-motion .love-divider path { stroke-dasharray:1;stroke-dashoffset:1; }
+.js-motion .love-divider.is-visible path { animation:vine-trace 3s ease .2s forwards; }
+.motion-enabled.invitation-ready .letter-bow--hero { animation:ribbon-breathe 8s ease-in-out infinite alternate; }
+.motion-enabled .letter-bow--reply.is-visible { animation:ribbon-breathe 8s ease-in-out 1.8s infinite alternate; }
+.js-motion .letter-signature { opacity:0; }
+.js-motion .intro__copy.is-visible .letter-signature { animation:signature-ink 2s ease .7s both; }
+@keyframes letter-ink { from { opacity:0; } to { opacity:1; } }
+@keyframes ribbon-breathe { from { rotate:-1deg; } to { rotate:1deg; } }
+@keyframes signature-ink { from { opacity:0;clip-path:inset(-30% 100% -30% -5%); } to { opacity:1;clip-path:inset(-30% -5% -30% -5%); } }
+.motion-paused .letter-signature { opacity:1!important;clip-path:none!important; }
+.motion-paused .love-divider path { stroke-dashoffset:0!important; }
+.motion-paused .wedding-letter h2 { opacity:1!important;transform:none!important; }
+
+/* Respect the shaping and line heights of both Southeast Asian scripts. */
+html[lang="th"] .wedding-letter h2,html[lang="th"] .wedding-letter .schedule-card h3 { font-family:"Noto Serif Thai",serif;font-style:normal;font-size:32px;line-height:1.7;letter-spacing:0; }
+html[lang="my"] .wedding-letter h2,html[lang="my"] .wedding-letter .schedule-card h3 { font-family:"Noto Serif Myanmar",serif;font-style:normal;font-size:28px;line-height:1.9;letter-spacing:0; }
+html[lang="th"] .wedding-letter .eyebrow,html[lang="th"] .letter-salutation,html[lang="th"] .wedding-letter .intro__copy p:not(.letter-signature),html[lang="th"] .wedding-letter .venue__copy>p:not(.eyebrow),html[lang="th"] .wedding-letter .rsvp__content>p:not(.eyebrow),html[lang="th"] .wedding-letter .schedule-card__time,html[lang="th"] .wedding-letter .program-note { font-family:"Noto Serif Thai",serif;font-size:16px;font-style:normal;line-height:1.9;letter-spacing:0; }
+html[lang="my"] .wedding-letter .eyebrow,html[lang="my"] .letter-salutation,html[lang="my"] .wedding-letter .intro__copy p:not(.letter-signature),html[lang="my"] .wedding-letter .venue__copy>p:not(.eyebrow),html[lang="my"] .wedding-letter .rsvp__content>p:not(.eyebrow),html[lang="my"] .wedding-letter .schedule-card__time,html[lang="my"] .wedding-letter .program-note { font-family:"Noto Serif Myanmar",serif;font-size:15px;font-style:normal;line-height:2.1;letter-spacing:0; }
+html[lang="th"] .wedding-letter .hero__invite,html[lang="th"] .wedding-letter .hero__date { font-family:"Noto Serif Thai",serif;font-size:24px; }
+html[lang="my"] .wedding-letter .hero__invite,html[lang="my"] .wedding-letter .hero__date { font-family:"Noto Serif Myanmar",serif;font-size:22px; }
+html[lang="th"] .wedding-letter .hero__invite,html[lang="my"] .wedding-letter .hero__invite { font-size:16px; }
+html[lang="th"] .wedding-letter .savebar__copy .savebar__eyebrow,html[lang="th"] .wedding-letter .countdown__grid span,html[lang="th"] .wedding-letter .scroll-cue,html[lang="th"] .wedding-letter .hero__year { font-family:"Noto Serif Thai",serif;font-style:normal;font-size:13px;letter-spacing:0; }
+html[lang="my"] .wedding-letter .savebar__copy .savebar__eyebrow,html[lang="my"] .wedding-letter .countdown__grid span,html[lang="my"] .wedding-letter .scroll-cue,html[lang="my"] .wedding-letter .hero__year { font-family:"Noto Serif Myanmar",serif;font-style:normal;font-size:12px;letter-spacing:0; }
+html[lang="th"] .wedding-letter .rsvp__content .rsvp__note { font:400 13px/1.9 "Noto Serif Thai",serif!important; }
+html[lang="my"] .wedding-letter .rsvp__content .rsvp__note { font:400 12px/2 "Noto Serif Myanmar",serif!important; }
+
+@media(max-width:700px) {
+  .wedding-letter { width:calc(100% - 20px);margin-top:94px;border-radius:180px 180px 3px 3px / 100px 100px 3px 3px; }
+  .wedding-letter::before { inset:9px; }
+  .letter-page .site-header { padding-inline:20px;top:20px; }
+  .wedding-letter .hero { padding:108px 22px 75px;min-height:760px; }
+  .letter-bow--hero { width:85px;height:62px;left:calc(50% - 42.5px);top:23px; }
+  .wedding-letter .hero__invite { font-size:20px; }
+  .wedding-letter .name-garden h1 { font-size:clamp(84px,26vw,153px); }
+  .wedding-letter .hero__full-names { font-size:13px;max-width:270px; }
+  .wedding-letter .hero__date { font-size:29px; }
+  .wedding-letter .section { padding:48px 27px; }
+  .wedding-letter .intro { padding-top:35px;padding-bottom:20px; }
+  .letter-salutation { font-size:21px; }
+  .wedding-letter .intro__heading h2 { font-size:39px; }
+  .wedding-letter .intro__copy p { font-size:22px; }
+  .wedding-letter .savebar { padding:15px 22px 30px; }
+  .wedding-letter .savebar__inner { padding:20px 0; }
+  .wedding-letter .savebar__copy { gap:10px; }
+  .wedding-letter .savebar__copy p { font-size:21px; }
+  .wedding-letter .savebar__copy .savebar__eyebrow { font-size:20px; }
+  .wedding-letter h2 { font-size:40px; }
+  .wedding-letter .schedule { padding-top:20px; }
+  .wedding-letter .schedule-card h3 { font-size:33px; }
+  .wedding-letter .venue { padding-top:20px; }
+  .wedding-letter .venue__copy>p:not(.eyebrow) { font-size:21px; }
+  .wedding-letter .countdown__grid strong { font-size:clamp(35px,11vw,53px); }
+  .wedding-letter .countdown__grid span { font-size:16px; }
+  .wedding-letter .countdown__grid>div { padding-inline:3px; }
+  .wedding-letter .rsvp { padding:45px 27px 55px; }
+  .wedding-letter .rsvp__content { padding-inline:0; }
+  .wedding-letter .rsvp__content h2 { font-size:43px; }
+  .wedding-letter .rsvp__content>p:not(.eyebrow) { font-size:21px; }
+  .letter-page footer { width:calc(100% - 20px);margin-bottom:15px;padding-bottom:65px; }
+  html[lang="th"] .wedding-letter h2,html[lang="th"] .wedding-letter .schedule-card h3 { font-size:27px; }
+  html[lang="my"] .wedding-letter h2,html[lang="my"] .wedding-letter .schedule-card h3 { font-size:24px; }
+  html[lang="my"] .wedding-letter .countdown__grid span { font-size:10px; }
+  html[lang="my"] .wedding-letter .savebar__copy p { font-size:15px; }
+  html[lang="th"] .wedding-letter .hero__date { font-size:22px; }
+  html[lang="my"] .wedding-letter .hero__date { font-size:21px; }
+  html[lang="th"] .wedding-letter .hero__invite,html[lang="my"] .wedding-letter .hero__invite { font-size:14px; }
+}

@@ -24,11 +24,14 @@
     <meta name="theme-color" content="#fffaf8" />
     <link rel="preload" as="image" href="assets/jasmine-vine.webp" />
     <link rel="stylesheet" href="styles.css?v=20260915-buttons-1" />
+    <link rel="stylesheet" href="letter.css?v=20260915-romance-1" />
   </head>
-  <body>
+  <body class="letter-page">
     <div class="reading-progress" aria-hidden="true"></div>
     <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+      <linearGradient id="satin-pink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff7fa"/><stop offset=".45" stop-color="#e9b8cb"/><stop offset=".68" stop-color="#fff0f6"/><stop offset="1" stop-color="#cf91a9"/></linearGradient>
+      <symbol id="love-bow" viewBox="0 0 180 130"><g fill="url(#satin-pink)" stroke="#ce99ac" stroke-width=".7"><path d="M85 53C57 4 6 8 21 43c8 19 43 20 64 16C55 50 35 40 35 28c17-4 39 16 50 25Z"/><path d="M95 53c28-49 79-45 64-10-8 19-43 20-64 16 30-9 50-19 50-31-17-4-39 16-50 25Z"/><path d="M83 57c-9 25-26 38-41 56l15-3 2 15c20-24 25-44 30-65Z"/><path d="M97 57c9 25 26 38 41 56l-15-3-2 15c-20-24-25-44-30-65Z"/><path d="M83 48q7-5 14 0l3 14q-10 6-20 0Z"/></g></symbol>
       <symbol id="botanical" viewBox="0 0 160 70"><path d="M8 56C47 56 88 16 151 20M38 48Q24 30 31 18Q50 27 48 43M67 34Q53 16 64 7Q81 15 78 29M94 24Q102 43 117 41Q114 25 104 22M123 20Q129 6 142 5Q143 19 130 20M56 41Q58 60 76 59Q76 43 67 36"/></symbol>
       <symbol id="rings" viewBox="0 0 80 80"><circle cx="29" cy="45" r="19"/><circle cx="51" cy="45" r="19"/><path d="m21 22 8-10 8 10-8 6zM29 12v16M46 20l5-8 5 8M35 6l3-4M20 6l-3-4"/></symbol>
       <symbol id="glasses" viewBox="0 0 80 80"><path d="m19 9 20 6-7 23c-5 10-23 4-20-6ZM29 41l-6 23M12 61l22 6M49 15l20-6 7 23c3 12-15 18-20 6ZM60 41l6 23M55 67l22-6M15 23l20 6M53 29l20-6M41 4v7M36 8l-3-4M47 8l3-4"/></symbol>
@@ -86,9 +89,10 @@
         <button class="language-switch__button" type="button" data-language="my" lang="my" aria-label="မြန်မာဘာသာ" aria-pressed="false">မြန်မာ</button>
       </nav>
     </header>
-    <main>
+    <main class="wedding-letter">
       <section class="hero" id="top" aria-labelledby="couple-names">
         <div class="hero__arch" aria-hidden="true"></div>
+        <svg class="letter-bow letter-bow--hero" aria-hidden="true"><use href="#love-bow"/></svg>
         <div class="hero__copy">
           <div class="hero__copy-inner">
             <p class="eyebrow" data-i18n="heroEyebrow">Together with their families</p>
@@ -104,13 +108,27 @@
             <div class="hero__rule" aria-hidden="true"><span>&#10047;</span></div>
             <div class="hero__date" data-i18n-html="heroDate">Sunday, the eighth<br />of November</div>
             <p class="hero__year" data-i18n="heroYear">Two Thousand Twenty-Six</p>
-            <div class="hero__actions">
-              <a class="button button--primary" href="https://forms.gle/t9pPc5BuD8Esa8QF6" target="_blank" rel="noopener" data-i18n="rsvpButton">RSVP now</a>
-              <a class="hero__details-link" href="#celebrate"><span data-i18n="details">Details</span><span aria-hidden="true">&darr;</span></a>
-            </div>
           </div>
         </div>
         <a class="scroll-cue" href="#celebrate"><span data-i18n="scrollExplore">Scroll to unfold our day</span><span aria-hidden="true">↓</span></a>
+      </section>
+
+      <section class="intro section" id="celebrate" aria-labelledby="celebrate-title">
+        <div class="container intro__layout">
+          <div class="intro__heading">
+            <p class="letter-salutation" data-i18n="dearGuests">To our dear family &amp; friends,</p>
+            <h2 id="celebrate-title" data-i18n="celebrateTitle">We're getting married</h2>
+          </div>
+          <div class="intro__copy">
+            <svg class="botanical" aria-hidden="true"><use href="#botanical"/></svg>
+            <p data-i18n="celebrateCopy">
+              We would be so happy to have you by our side as we begin our
+              next chapter. Join us for an evening of vows, dinner, dancing,
+              and a little bit of magic.
+            </p>
+            <p class="letter-signature" aria-label="Ye and Nang">Ye <em>&amp;</em> Nang</p>
+          </div>
+        </div>
       </section>
 
       <section class="savebar" aria-label="Calendar options">
@@ -137,61 +155,36 @@
         </div>
       </section>
 
-      <section class="intro section" id="celebrate" aria-labelledby="celebrate-title">
-        <span class="chapter-mark" aria-hidden="true">01 /</span>
-        <div class="container intro__layout">
-          <div class="intro__heading">
-            <p class="eyebrow" data-i18n="celebrateEyebrow">A celebration of love</p>
-            <h2 id="celebrate-title" data-i18n="celebrateTitle">We're getting married</h2>
-          </div>
-          <div class="intro__copy">
-            <svg class="botanical" aria-hidden="true"><use href="#botanical"/></svg>
-            <p data-i18n="celebrateCopy">
-              We would be so happy to have you by our side as we begin our
-              next chapter. Join us for an evening of vows, dinner, dancing,
-              and a little bit of magic.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section class="schedule section section--rose" aria-labelledby="schedule-title">
-        <span class="chapter-mark" aria-hidden="true">02 /</span>
         <div class="container">
+          <svg class="love-divider" viewBox="0 0 240 70" aria-hidden="true"><path pathLength="1" d="M10 45c28-31 61 23 93-3 28-22 32-35 21-36-13-2-22 19-12 30 13 16 26-4 19-13-9-12-22 8-11 20 28 31 64-29 110-2"/></svg>
           <p class="eyebrow" data-i18n="scheduleEyebrow">The day</p>
-          <h2 id="schedule-title" data-i18n="scheduleDate">Sunday, November 8, 2026</h2>
+          <h2 id="schedule-title" data-i18n="dayTogether">A day to remember</h2>
           <div class="schedule__grid">
-            <div class="schedule__thread" aria-hidden="true"><span></span></div>
             <article class="schedule-card">
               <svg class="line-icon" aria-hidden="true"><use href="#rings"/></svg>
-              <div class="schedule-card__icon" aria-hidden="true">01</div>
               <h3 data-i18n="ceremony">Ceremony</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
-              <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
             <article class="schedule-card">
               <svg class="line-icon" aria-hidden="true"><use href="#glasses"/></svg>
-              <div class="schedule-card__icon" aria-hidden="true">02</div>
               <h3 data-i18n="reception">Reception</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
-              <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
             <article class="schedule-card">
               <svg class="line-icon" aria-hidden="true"><use href="#music"/></svg>
-              <div class="schedule-card__icon" aria-hidden="true">03</div>
               <h3 data-i18n="dinnerDancing">Dinner &amp; Dancing</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
-              <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
           </div>
+          <p class="program-note" data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
         </div>
       </section>
 
       <section class="venue section" aria-labelledby="venue-title">
-        <span class="chapter-mark" aria-hidden="true">03 /</span>
         <div class="container venue__layout">
           <div class="venue__visual" aria-hidden="true">
-            <div class="venue__keepsake"><span class="postcard-date">08 / 11 / 26</span><svg class="venue-route" viewBox="0 0 300 190" aria-hidden="true"><path class="venue-route__line" pathLength="1" d="M25 155C55 105 115 173 123 113S67 37 126 34S195 153 237 93S236 57 260 35"/><circle class="venue-route__origin" cx="25" cy="155" r="4"/><g class="venue-route__pin"><path d="M260 13c-13 0-20 10-20 20 0 13 20 31 20 31s20-18 20-31c0-10-7-20-20-20Z"/><circle cx="260" cy="33" r="6"/></g></svg><span>Ye <em>&amp;</em> Nang<img class="postcard-vine" src="assets/jasmine-vine.webp" alt="" loading="lazy" /></span><small data-i18n="letterNote">With love, always</small></div>
+            <svg class="botanical" aria-hidden="true"><use href="#botanical"/></svg>
           </div>
           <div class="venue__copy">
             <p class="eyebrow" data-i18n="venueEyebrow">Where to find us</p>
@@ -208,6 +201,7 @@
 
       <section class="countdown section section--dark" aria-labelledby="countdown-title">
         <div class="container">
+          <svg class="love-divider" viewBox="0 0 240 70" aria-hidden="true"><path pathLength="1" d="M10 45c28-31 61 23 93-3 28-22 32-35 21-36-13-2-22 19-12 30 13 16 26-4 19-13-9-12-22 8-11 20 28 31 64-29 110-2"/></svg>
           <p class="eyebrow eyebrow--light" data-i18n="countdownEyebrow">Counting down</p>
           <h2 id="countdown-title" data-i18n="countdownTitle">Until we say I do</h2>
           <div class="countdown__grid" aria-label="Time until our wedding" data-i18n-aria="countdownTitle">
@@ -221,6 +215,7 @@
 
       <section class="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
         <div class="container rsvp__frame">
+          <svg class="letter-bow letter-bow--reply" aria-hidden="true"><use href="#love-bow"/></svg>
           <div class="rsvp__art" aria-hidden="true"><span>Y<span>&amp;</span>N</span></div>
           <div class="rsvp__content">
             <p class="eyebrow" data-i18n="rsvpEyebrow">Kindly reply</p>
@@ -240,7 +235,7 @@
       <button class="replay-button" type="button" data-i18n="replay" hidden>Open the envelope again</button>
     </footer>
     <button class="motion-toggle" type="button" aria-pressed="false" hidden><span class="motion-toggle__icon" aria-hidden="true">Ⅱ</span><span class="motion-toggle__label">Pause motion</span></button>
-    <script src="script.js?v=20260915-entwined-1"></script>
+    <script src="script.js?v=20260915-romance-1"></script>
   </body>
 </html>
 

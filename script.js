@@ -104,7 +104,7 @@ function initializeInvitation() {
   document.querySelectorAll(".hero__copy-inner > *").forEach((element, index) => element.style.setProperty("--order", index));
   const groups = [
     ".savebar__copy, .calendar-actions", ".intro__heading, .intro__copy",
-    ".schedule > .container > .eyebrow, .schedule h2", ".schedule-card", ".schedule__thread",
+    ".schedule > .container > .eyebrow, .schedule h2", ".schedule-card", ".love-divider, .program-note, .letter-bow--reply",
     ".venue__visual, .venue__copy", ".countdown .eyebrow, .countdown h2",
     ".countdown__grid > div", ".rsvp__frame", ".rsvp__content > *", "footer > *"
   ];
@@ -262,6 +262,8 @@ const translations = {
 };
 
 Object.assign(translations.en, {
+  dearGuests: "To our dear family & friends,",
+  dayTogether: "A day to remember",
   skipOpening: "Skip to invitation",
   letterNote: "With love, always",
   chooseLanguage: "Choose language",
@@ -276,6 +278,8 @@ Object.assign(translations.en, {
   resumeMotion: "Resume motion",
 });
 Object.assign(translations.th, {
+  dearGuests: "ถึงครอบครัวและเพื่อน ๆ ที่รัก",
+  dayTogether: "วันแห่งความทรงจำ",
   skipOpening: "ข้ามไปยังการ์ดเชิญ",
   letterNote: "ด้วยรักเสมอ",
   chooseLanguage: "เลือกภาษา",
@@ -291,6 +295,8 @@ Object.assign(translations.th, {
 });
 
 translations.my = {
+  dearGuests: "ချစ်ရသော မိသားစုနှင့် မိတ်ဆွေများသို့",
+  dayTogether: "အမှတ်တရ နေ့လေးတစ်နေ့",
   skipOpening: "ဖိတ်စာသို့ တိုက်ရိုက်သွားရန်",
   letterNote: "ချစ်ခြင်းမေတ္တာဖြင့် အမြဲတမ်း",
   pageTitle: "Ye နှင့် Nang တို့၏ မင်္ဂလာဖိတ်စာ",
