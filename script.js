@@ -141,7 +141,9 @@ function initializeInvitation() {
   const venueArt = document.querySelector(".venue__visual");
   function updateProgress() {
     const distance = document.documentElement.scrollHeight - window.innerHeight;
-    progress.style.transform = `scaleX(${distance > 0 ? Math.min(1, window.scrollY / distance) : 0})`;
+    const readingProgress = distance > 0 ? Math.min(1, window.scrollY / distance) : 0;
+    progress.style.setProperty("--reading-progress", readingProgress);
+    progress.style.transform = `scaleX(${readingProgress})`;
     if (!motionPaused && invitationIntro.hidden) {
       const heroBounds = hero.getBoundingClientRect();
       if (heroBounds.bottom > 0) hero.style.setProperty("--flower-depth", `${Math.min(window.scrollY * .09, 70)}px`);

@@ -25,6 +25,16 @@ Geometry is measured from the actual envelope and untransformed card dimensions 
 - Venue directions are a simple centered invitation detail; the decorative route graphic has been removed. Both calendar buttons and the Maps button retain their prominent themed design and original destinations.
 - The countdown is printed directly on the paper, without dashboard tiles. The RSVP closes the letter rather than repeating a call to action in the hero.
 - Slow ink fades, drawn ornamental dividers, a revealing signature and gentle ribbon movement replace presentation-style card tilts. `letter.css` scopes the redesign to the main invitation without changing envelope styles.
+
+## Heirloom refinement
+
+- The invitation is presented as a finely bordered arched sheet on a layered blush background, with subtle paper grain and soft depth rather than rectangular website sections.
+- A small double-line oval holds the date like a printed keepsake, while the guest message gains a restrained quotation mark and balanced typesetting.
+- Tiny jasmine vines grow from selected paper margins only. They remain secondary to the names and never become central bouquets.
+- The wedding program alternates gently from side to side like a handwritten order of events. The icons and ornamental dividers draw themselves as guests reach them.
+- Countdown values are connected by one fine rule and delicate dots, and the venue and RSVP use soft ceremonial arches instead of dashboard cards.
+- A vertical progress thread runs along the edge of the stationery and ends in a small star, making scrolling feel like following a ribbon through the letter.
+- The entire paper arrives softly after the envelope closes; the date keepsake, margin vines, program entries and final reply then reveal in their own restrained sequence.
 - Motion can be paused; system reduced-motion preferences are honored by default. There is no automatic music.
 
 ## Artwork

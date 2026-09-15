@@ -24,7 +24,7 @@
     <meta name="theme-color" content="#fffaf8" />
     <link rel="preload" as="image" href="assets/jasmine-vine.webp" />
     <link rel="stylesheet" href="styles.css?v=20260915-buttons-1" />
-    <link rel="stylesheet" href="letter.css?v=20260915-romance-1" />
+    <link rel="stylesheet" href="letter.css?v=20260915-heirloom-1" />
   </head>
   <body class="letter-page">
     <div class="reading-progress" aria-hidden="true"></div>
@@ -90,6 +90,7 @@
       </nav>
     </header>
     <main class="wedding-letter">
+      <span class="paper-grain" aria-hidden="true"></span>
       <section class="hero" id="top" aria-labelledby="couple-names">
         <div class="hero__arch" aria-hidden="true"></div>
         <svg class="letter-bow letter-bow--hero" aria-hidden="true"><use href="#love-bow"/></svg>
@@ -105,15 +106,19 @@
               <span class="name-sprig name-sprig--nang" aria-hidden="true"><img src="assets/jasmine-vine.webp" alt="" /></span>
             </div>
             <p class="hero__full-names">Ye Moe Myint &amp; Nang Htet Htet Aung</p>
-            <div class="hero__rule" aria-hidden="true"><span>&#10047;</span></div>
-            <div class="hero__date" data-i18n-html="heroDate">Sunday, the eighth<br />of November</div>
-            <p class="hero__year" data-i18n="heroYear">Two Thousand Twenty-Six</p>
+            <div class="hero__date-card">
+              <span class="hero__date-label" data-i18n="savebarTitle">Keep this date close</span>
+              <div class="hero__rule" aria-hidden="true"><span>&#10047;</span></div>
+              <div class="hero__date" data-i18n-html="heroDate">Sunday, the eighth<br />of November</div>
+              <p class="hero__year" data-i18n="heroYear">Two Thousand Twenty-Six</p>
+            </div>
           </div>
         </div>
         <a class="scroll-cue" href="#celebrate"><span data-i18n="scrollExplore">Scroll to unfold our day</span><span aria-hidden="true">↓</span></a>
       </section>
 
       <section class="intro section" id="celebrate" aria-labelledby="celebrate-title">
+        <span class="margin-sprig margin-sprig--intro" aria-hidden="true"><img src="assets/jasmine-vine.webp" alt="" loading="lazy" /></span>
         <div class="container intro__layout">
           <div class="intro__heading">
             <p class="letter-salutation" data-i18n="dearGuests">To our dear family &amp; friends,</p>
@@ -156,6 +161,7 @@
       </section>
 
       <section class="schedule section section--rose" aria-labelledby="schedule-title">
+        <span class="margin-sprig margin-sprig--schedule" aria-hidden="true"><img src="assets/jasmine-vine.webp" alt="" loading="lazy" /></span>
         <div class="container">
           <svg class="love-divider" viewBox="0 0 240 70" aria-hidden="true"><path pathLength="1" d="M10 45c28-31 61 23 93-3 28-22 32-35 21-36-13-2-22 19-12 30 13 16 26-4 19-13-9-12-22 8-11 20 28 31 64-29 110-2"/></svg>
           <p class="eyebrow" data-i18n="scheduleEyebrow">The day</p>
@@ -182,6 +188,7 @@
       </section>
 
       <section class="venue section" aria-labelledby="venue-title">
+        <span class="margin-sprig margin-sprig--venue" aria-hidden="true"><img src="assets/jasmine-vine.webp" alt="" loading="lazy" /></span>
         <div class="container venue__layout">
           <div class="venue__visual" aria-hidden="true">
             <svg class="botanical" aria-hidden="true"><use href="#botanical"/></svg>
@@ -214,6 +221,7 @@
       </section>
 
       <section class="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
+        <span class="margin-sprig margin-sprig--reply" aria-hidden="true"><img src="assets/jasmine-vine.webp" alt="" loading="lazy" /></span>
         <div class="container rsvp__frame">
           <svg class="letter-bow letter-bow--reply" aria-hidden="true"><use href="#love-bow"/></svg>
           <div class="rsvp__art" aria-hidden="true"><span>Y<span>&amp;</span>N</span></div>
@@ -235,7 +243,7 @@
       <button class="replay-button" type="button" data-i18n="replay" hidden>Open the envelope again</button>
     </footer>
     <button class="motion-toggle" type="button" aria-pressed="false" hidden><span class="motion-toggle__icon" aria-hidden="true">Ⅱ</span><span class="motion-toggle__label">Pause motion</span></button>
-    <script src="script.js?v=20260915-romance-1"></script>
+    <script src="script.js?v=20260915-heirloom-1"></script>
   </body>
 </html>
 

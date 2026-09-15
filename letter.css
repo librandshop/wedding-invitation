@@ -145,3 +145,142 @@ html[lang="my"] .wedding-letter .rsvp__content .rsvp__note { font:400 12px/2 "No
   html[lang="my"] .wedding-letter .hero__date { font-size:21px; }
   html[lang="th"] .wedding-letter .hero__invite,html[lang="my"] .wedding-letter .hero__invite { font-size:14px; }
 }
+
+/* Heirloom finish: intimate stationery, floral margins and a quiet visual cadence. */
+.letter-page {
+  background:
+    radial-gradient(circle at 15% 8%,#fff7fa 0 8%,transparent 26%),
+    radial-gradient(circle at 88% 70%,#f7dfe9 0 7%,transparent 29%),
+    linear-gradient(135deg,#f9edf2,#fdf5f8 48%,#f5e4eb);
+}
+.letter-page .site-header { position:fixed;z-index:91;top:18px; }
+.letter-page .language-switch { border-color:#e3c5d1;background:#fffafced;box-shadow:0 8px 24px #99687b12;backdrop-filter:blur(10px); }
+.letter-page .reading-progress {
+  display:block;top:115px;left:auto;right:max(18px,calc((100vw - 940px)/2 + 14px));
+  width:1px;height:calc(100vh - 150px);transform:scaleY(var(--reading-progress,0))!important;
+  transform-origin:top;background:linear-gradient(#dcb0c1,#a96781);opacity:.75;
+}
+.letter-page .reading-progress::after {
+  content:"✦";position:absolute;left:50%;bottom:-10px;translate:-50% 50%;color:#b6758e;
+  font-size:11px;line-height:1;background:#fff8fb;padding:4px;border-radius:50%;
+}
+.wedding-letter { width:min(1000px,calc(100% - 64px));overflow:hidden;box-shadow:0 28px 100px #8f5b7018,0 2px 7px #9b68710d; }
+.wedding-letter::before { inset:17px;border-color:#e6cbd6;box-shadow:inset 0 0 0 7px #fff,inset 0 0 0 8px #f3e5ea; }
+.paper-grain { position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.27;background-image:radial-gradient(#b4879818 .55px,transparent .75px);background-size:4px 4px;mix-blend-mode:multiply; }
+.wedding-letter .section { isolation:isolate; }
+.wedding-letter .section:not(.hero)::after {
+  content:"";position:absolute;left:50%;bottom:0;width:76px;height:1px;translate:-50% 0;
+  background:linear-gradient(90deg,transparent,#d9b5c3,transparent);
+}
+.wedding-letter .hero { min-height:880px;padding-top:142px; }
+.letter-bow--hero { top:34px;filter:drop-shadow(0 5px 5px #b97e9514); }
+.wedding-letter .hero__copy-inner { max-width:690px; }
+.wedding-letter .hero .eyebrow { color:#9c6078; }
+.wedding-letter .name-garden { margin-top:10px;margin-bottom:10px; }
+.wedding-letter .hero__full-names { color:#755762; }
+.hero__date-card { position:relative;width:min(330px,90%);margin:23px auto 0;padding:27px 25px 23px; }
+.hero__date-card::before,.hero__date-card::after { content:"";position:absolute;inset:0;border:1px solid #ead2dc;border-radius:50%;pointer-events:none; }
+.hero__date-card::after { inset:7px;opacity:.65; }
+.hero__date-label { position:absolute;top:-10px;left:50%;translate:-50% 0;padding:0 15px;background:#fffdfc;color:#a2687f;font:italic 15px/1.4 "Cormorant Garamond",serif;white-space:nowrap; }
+.wedding-letter .hero__rule { margin:0 auto 13px; }
+.wedding-letter .hero__year { margin-bottom:0; }
+.wedding-letter .intro { padding:78px 70px 65px; }
+.wedding-letter .intro__layout { position:relative;max-width:610px;padding:35px 50px 39px; }
+.wedding-letter .intro__layout::before { content:"“";position:absolute;top:-24px;left:12px;color:#efd4df;font:italic 125px/1 "Cormorant Garamond",serif; }
+.wedding-letter .intro__heading,.wedding-letter .intro__copy { position:relative;z-index:1; }
+.wedding-letter .intro__copy p { text-wrap:balance; }
+.wedding-letter .savebar { padding-top:34px;padding-bottom:62px; }
+.wedding-letter .savebar__inner { padding:34px 36px 38px;border:1px solid #efdce4;border-radius:150px;background:linear-gradient(135deg,#fffafb,#fdf0f5 58%,#fff);box-shadow:inset 0 0 0 7px #fffdfc; }
+.wedding-letter .savebar__copy { margin-bottom:27px; }
+.wedding-letter .schedule { padding:62px 70px 78px; }
+.wedding-letter .schedule__grid { gap:48px;max-width:590px;margin-top:55px; }
+.wedding-letter .schedule-card {
+  display:grid;grid-template-columns:76px 1fr;grid-template-rows:auto auto;column-gap:25px;
+  align-items:center;text-align:left;padding:0 30px;
+}
+.wedding-letter .schedule-card:nth-child(even) { grid-template-columns:1fr 76px;text-align:right; }
+.wedding-letter .schedule-card:nth-child(even) .line-icon { grid-column:2; }
+.wedding-letter .schedule-card:nth-child(even) h3,.wedding-letter .schedule-card:nth-child(even) p { grid-column:1; }
+.wedding-letter .schedule-card .line-icon { grid-column:1;grid-row:1 / 3;width:58px;height:58px;margin:0; }
+.wedding-letter .schedule-card h3 { grid-column:2;grid-row:1;margin:0; }
+.wedding-letter .schedule-card .schedule-card__time { grid-column:2;grid-row:2; }
+.wedding-letter .schedule-card::before {
+  display:block;content:"";position:absolute;left:calc(50% - 34px);right:calc(50% - 34px);bottom:-25px;height:1px;
+  background:linear-gradient(90deg,transparent,#e6cdd7,transparent);
+}
+.wedding-letter .schedule-card:last-child::before { display:none; }
+.program-note { margin-top:48px; }
+.wedding-letter .venue { padding:70px 70px 82px; }
+.wedding-letter .venue__layout { max-width:610px;padding:47px 48px 50px;border:1px solid #eed8e1;border-radius:48% 48% 6px 6px / 24% 24% 6px 6px;background:linear-gradient(#fffafc,#fff); }
+.wedding-letter .venue__visual { margin-bottom:16px; }
+.wedding-letter .venue__visual .botanical { margin:auto; }
+.wedding-letter .countdown { padding:66px 70px 78px; }
+.wedding-letter .countdown__grid { position:relative;max-width:570px;margin-top:42px; }
+.wedding-letter .countdown__grid::before { content:"";position:absolute;left:8%;right:8%;top:32px;height:1px;background:#ead3dc; }
+.wedding-letter .countdown__grid>div { position:relative; }
+.wedding-letter .countdown__grid strong { position:relative;display:inline-block;padding:0 10px;background:#fffdfc; }
+.wedding-letter .countdown__grid>div:not(:last-child)::after { content:"·";position:absolute;right:-3px;top:7px;color:#c48ba1;font:italic 29px/1 serif; }
+.wedding-letter .rsvp { padding:82px 70px 105px;background:radial-gradient(ellipse at 50% 50%,#fff4f8 0 24%,transparent 65%); }
+.wedding-letter .rsvp__frame { max-width:670px;padding:40px 45px 55px;border:1px solid #eed7e0;border-radius:50% 50% 5px 5px / 25% 25% 5px 5px;background:#fffdfcc7; }
+.letter-bow--reply { margin-top:-85px;margin-bottom:12px;filter:drop-shadow(0 5px 5px #b97e9514); }
+.letter-page footer { width:min(1000px,calc(100% - 64px)); }
+.margin-sprig { position:absolute;z-index:0;display:block;width:92px;height:170px;opacity:.45;pointer-events:none;filter:saturate(.8);transform-origin:50% 8%; }
+.margin-sprig img { display:block;width:100%;height:100%;object-fit:contain; }
+.margin-sprig--intro { left:20px;top:28%;rotate:24deg; }
+.margin-sprig--schedule { right:10px;top:16%;rotate:-20deg;scale:-1 1; }
+.margin-sprig--venue { left:16px;bottom:8%;rotate:31deg; }
+.margin-sprig--reply { right:12px;bottom:8%;rotate:-25deg;scale:-1 1; }
+
+/* The letter arrives as stationery; each detail is then written into place. */
+.js-motion.invitation-ready .wedding-letter { animation:paper-arrive 1.6s cubic-bezier(.18,.75,.2,1) both; }
+.js-motion .hero__date-card { opacity:0;transform:scale(.94); }
+.js-motion.invitation-ready .hero__date-card { animation:date-keepsake 1.5s var(--ease) 1.65s both; }
+.js-motion.invitation-ready .hero__date-card::before { animation:oval-trace 1.7s ease 2s both; }
+.js-motion .margin-sprig { opacity:0;clip-path:inset(0 0 100%); }
+.js-motion .section:has([data-reveal].is-visible) .margin-sprig { animation:margin-vine-grow 2.2s var(--ease) .25s both; }
+.motion-enabled .section:has([data-reveal].is-visible) .margin-sprig { animation:margin-vine-grow 2.2s var(--ease) .25s both,margin-vine-breathe 8s ease-in-out 2.6s infinite alternate; }
+.js-motion .wedding-letter .schedule-card:nth-child(odd)[data-reveal] { transform:translate(-24px,15px); }
+.js-motion .wedding-letter .schedule-card:nth-child(even)[data-reveal] { transform:translate(24px,15px); }
+.js-motion .wedding-letter .schedule-card.is-visible { transform:none; }
+.js-motion .wedding-letter .venue__layout { transition-duration:2.1s; }
+.js-motion .wedding-letter .rsvp__frame { transform:translateY(18px) scale(.98);transition-duration:2.1s; }
+.js-motion .wedding-letter .rsvp__frame.is-visible { transform:none; }
+@keyframes paper-arrive { from { opacity:0;translate:0 24px;filter:blur(2px); } to { opacity:1;translate:0 0;filter:none; } }
+@keyframes date-keepsake { from { opacity:0;transform:scale(.94); } to { opacity:1;transform:none; } }
+@keyframes oval-trace { from { clip-path:inset(0 100% 0 0); } to { clip-path:inset(0); } }
+@keyframes margin-vine-grow { from { opacity:0;clip-path:inset(0 0 100%);translate:0 -14px; } to { opacity:.45;clip-path:inset(0);translate:0 0; } }
+@keyframes margin-vine-breathe { from { translate:0 0; } to { translate:0 7px; } }
+.motion-paused .wedding-letter { animation:none!important;opacity:1!important;translate:0 0!important;filter:none!important; }
+.motion-paused .hero__date-card,.motion-paused .margin-sprig { opacity:1!important;transform:none!important;clip-path:none!important;translate:0 0!important; }
+
+@media(max-width:700px) {
+  .letter-page .reading-progress { right:7px;top:102px;height:calc(100vh - 125px); }
+  .wedding-letter { width:calc(100% - 18px); }
+  .wedding-letter::before { inset:8px;box-shadow:inset 0 0 0 4px #fff,inset 0 0 0 5px #f3e5ea; }
+  .wedding-letter .hero { min-height:820px;padding-top:115px; }
+  .hero__date-card { width:min(310px,94%);padding:25px 18px 21px; }
+  .hero__date-label { font-size:13px; }
+  .wedding-letter .intro { padding:62px 28px 45px; }
+  .wedding-letter .intro__layout { padding:25px 8px 30px; }
+  .wedding-letter .intro__layout::before { left:-3px;top:-25px;font-size:95px; }
+  .wedding-letter .savebar { padding:25px 24px 52px; }
+  .wedding-letter .savebar__inner { padding:27px 13px 30px;border-radius:70px; }
+  .wedding-letter .schedule { padding:48px 28px 62px; }
+  .wedding-letter .schedule__grid { gap:44px;margin-top:43px; }
+  .wedding-letter .schedule-card,.wedding-letter .schedule-card:nth-child(even) { grid-template-columns:60px 1fr;text-align:left;padding:0 16px;column-gap:18px; }
+  .wedding-letter .schedule-card:nth-child(even) .line-icon { grid-column:1; }
+  .wedding-letter .schedule-card:nth-child(even) h3,.wedding-letter .schedule-card:nth-child(even) p { grid-column:2; }
+  .wedding-letter .schedule-card .line-icon { width:46px;height:46px; }
+  .wedding-letter .schedule-card::before { left:17%;right:17%; }
+  .wedding-letter .venue { padding:55px 25px 67px; }
+  .wedding-letter .venue__layout { padding:40px 22px 43px;border-radius:45% 45% 5px 5px / 18% 18% 5px 5px; }
+  .wedding-letter .countdown { padding:54px 24px 65px; }
+  .wedding-letter .countdown__grid { margin-top:35px; }
+  .wedding-letter .countdown__grid::before { top:22px; }
+  .wedding-letter .countdown__grid>div:not(:last-child)::after { top:2px;font-size:23px; }
+  .wedding-letter .rsvp { padding:75px 25px 80px; }
+  .wedding-letter .rsvp__frame { padding:35px 18px 45px;border-radius:48% 48% 5px 5px / 16% 16% 5px 5px; }
+  .margin-sprig { width:62px;height:120px;opacity:.32; }
+  .margin-sprig--intro,.margin-sprig--venue { left:-12px; }
+  .margin-sprig--schedule,.margin-sprig--reply { right:-14px; }
+}
