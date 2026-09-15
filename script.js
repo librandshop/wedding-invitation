@@ -1,4 +1,25 @@
 // Change this to your ceremony time once confirmed. Use: YYYY-MM-DDTHH:MM:SS
+const invitationIntro = document.querySelector(".invitation-intro");
+const openInvitation = document.querySelector(".invitation-intro__button");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function revealInvitation() {
+  if (!invitationIntro || document.body.classList.contains("invitation-opening")) return;
+
+  document.body.classList.add("invitation-opening");
+  const cleanupDelay = reduceMotion ? 0 : 1450;
+  window.setTimeout(() => document.body.classList.remove("invitation-open"), reduceMotion ? 0 : 650);
+  window.setTimeout(() => invitationIntro.remove(), cleanupDelay);
+}
+
+if (invitationIntro && openInvitation) {
+  document.body.classList.add("invitation-open");
+  openInvitation.addEventListener("click", revealInvitation);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") revealInvitation();
+  });
+}
+
 const weddingDate = new Date("2026-11-08T00:00:00");
 
 const units = {
@@ -142,4 +163,5 @@ try {
 
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
+
 
