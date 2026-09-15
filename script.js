@@ -1,25 +1,123 @@
-// Change this to your ceremony time once confirmed. Use: YYYY-MM-DDTHH:MM:SS
 const invitationIntro = document.querySelector(".invitation-intro");
 const openInvitation = document.querySelector(".invitation-intro__button");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+const motionButton = document.querySelector(".motion-toggle");
+const pageContent = [...document.querySelectorAll(".site-header, main, footer")];
+let motionPaused = motionPreference.matches;
+let openingTimer;
+let revealObserver;
+
+function finishOpening() {
+  window.clearTimeout(openingTimer);
+  invitationIntro.hidden = true;
+  document.body.classList.remove("invitation-open", "invitation-opening");
+  pageContent.forEach(element => { element.inert = false; });
+  document.body.classList.add("invitation-ready");
+  document.querySelector("#couple-names").focus({ preventScroll: true });
+  observeReveals();
+}
 
 function revealInvitation() {
-  if (!invitationIntro || document.body.classList.contains("invitation-opening")) return;
-
+  if (invitationIntro.hidden || document.body.classList.contains("invitation-opening")) return;
+  if (motionPaused) { finishOpening(); return; }
   document.body.classList.add("invitation-opening");
-  const cleanupDelay = reduceMotion ? 0 : 1450;
-  window.setTimeout(() => document.body.classList.remove("invitation-open"), reduceMotion ? 0 : 650);
-  window.setTimeout(() => invitationIntro.remove(), cleanupDelay);
+  openingTimer = window.setTimeout(finishOpening, 2450);
 }
 
-if (invitationIntro && openInvitation) {
+function showEnvelope() {
+  window.clearTimeout(openingTimer);
+  revealObserver?.disconnect();
+  document.body.classList.remove("invitation-ready", "invitation-opening");
+  window.scrollTo({ top: 0, behavior: "instant" });
+  invitationIntro.hidden = false;
   document.body.classList.add("invitation-open");
-  openInvitation.addEventListener("click", revealInvitation);
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") revealInvitation();
-  });
+  pageContent.forEach(element => { element.inert = true; });
+  document.querySelectorAll("[data-reveal]").forEach(element => element.classList.remove("is-visible"));
+  openInvitation.focus({ preventScroll: true });
 }
 
+function observeReveals() {
+  const elements = document.querySelectorAll("[data-reveal]");
+  if (motionPaused || !("IntersectionObserver" in window)) {
+    elements.forEach(element => element.classList.add("is-visible"));
+    return;
+  }
+  revealObserver ??= new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: .12, rootMargin: "0px 0px -25px 0px" });
+  elements.forEach(element => revealObserver.observe(element));
+}
+
+function refreshMotionButton() {
+  const copy = translations[document.documentElement.lang] || translations.en;
+  motionButton.querySelector(".motion-toggle__label").textContent = motionPaused ? copy.resumeMotion : copy.pauseMotion;
+  motionButton.querySelector(".motion-toggle__icon").textContent = motionPaused ? "▷" : "Ⅱ";
+  motionButton.setAttribute("aria-pressed", String(motionPaused));
+}
+
+function setMotionPaused(paused) {
+  motionPaused = paused;
+  document.body.classList.toggle("motion-paused", paused);
+  document.body.classList.toggle("motion-enabled", !paused);
+  refreshMotionButton();
+  if (paused && document.body.classList.contains("invitation-opening")) finishOpening();
+  if (invitationIntro.hidden) observeReveals();
+}
+
+function initializeInvitation() {
+  document.body.classList.add("js-motion");
+  document.querySelectorAll(".hero__copy-inner > *").forEach((element, index) => element.style.setProperty("--order", index));
+  const groups = [
+    ".savebar__copy, .calendar-actions", ".intro__heading, .intro__copy",
+    ".schedule > .container > .eyebrow, .schedule h2", ".schedule-card",
+    ".venue__visual, .venue__copy", ".countdown .eyebrow, .countdown h2",
+    ".countdown__grid > div", ".rsvp__frame", "footer > *"
+  ];
+  groups.forEach(selector => document.querySelectorAll(selector).forEach((element, index) => {
+    element.dataset.reveal = element.matches(".schedule-card, .rsvp__frame") ? "card" : element.matches(".venue__visual") ? "art" : "text";
+    element.style.setProperty("--delay", `${Math.min(index * 130, 390)}ms`);
+  }));
+  openInvitation.addEventListener("click", revealInvitation);
+  document.querySelector(".envelope").addEventListener("click", revealInvitation);
+  document.querySelector(".replay-button").hidden = false;
+  document.querySelector(".replay-button").addEventListener("click", showEnvelope);
+  motionButton.hidden = false;
+  motionButton.addEventListener("click", () => setMotionPaused(!motionPaused));
+  motionPreference.addEventListener("change", event => setMotionPaused(event.matches));
+  setMotionPaused(motionPaused);
+  document.addEventListener("keydown", event => {
+    if (invitationIntro.hidden) return;
+    if (event.key === "Escape") { event.preventDefault(); finishOpening(); }
+    if (event.key === "Tab") {
+      const focusable = [...invitationIntro.querySelectorAll("button"), motionButton];
+      const index = focusable.indexOf(document.activeElement);
+      event.preventDefault();
+      focusable[(index + (event.shiftKey ? -1 : 1) + focusable.length) % focusable.length].focus();
+    }
+  });
+  document.addEventListener("visibilitychange", () => document.body.classList.toggle("page-hidden", document.hidden));
+  const progress = document.querySelector(".reading-progress");
+  let scrollFrame = false;
+  function updateProgress() {
+    const distance = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = `scaleX(${distance > 0 ? Math.min(1, window.scrollY / distance) : 0})`;
+    scrollFrame = false;
+  }
+  window.addEventListener("scroll", () => {
+    if (!scrollFrame) { scrollFrame = true; requestAnimationFrame(updateProgress); }
+  }, { passive: true });
+  window.addEventListener("resize", updateProgress);
+  if (window.location.hash && document.getElementById(window.location.hash.slice(1))) {
+    document.body.classList.add("invitation-ready");
+    observeReveals();
+  } else showEnvelope();
+}
+
+// Replace midnight with the confirmed ceremony time when available.
 const weddingDate = new Date("2026-11-08T00:00:00");
 
 const units = {
@@ -110,6 +208,29 @@ const translations = {
   },
 };
 
+Object.assign(translations.en, {
+  openingEyebrow: "A little envelope. A lifetime of love.",
+  openingTitle: "Something beautiful awaits",
+  letterEyebrow: "You're invited to our wedding",
+  openingPrompt: "Sealed with love, just for you",
+  openInvitation: "Open invitation",
+  scrollExplore: "Scroll to unfold our day",
+  replay: "Open the envelope again",
+  pauseMotion: "Pause motion",
+  resumeMotion: "Resume motion",
+});
+Object.assign(translations.th, {
+  openingEyebrow: "ซองเล็ก ๆ กับความรักตลอดไป",
+  openingTitle: "ความงดงามกำลังรอคุณอยู่",
+  letterEyebrow: "ขอเชิญร่วมงานแต่งงานของเรา",
+  openingPrompt: "ส่งถึงคุณด้วยความรัก",
+  openInvitation: "เปิดการ์ดเชิญ",
+  scrollExplore: "เลื่อนเพื่อชมวันพิเศษของเรา",
+  replay: "เปิดซองอีกครั้ง",
+  pauseMotion: "หยุดภาพเคลื่อนไหว",
+  resumeMotion: "เล่นภาพเคลื่อนไหว",
+});
+
 function updateCountdown() {
   const remaining = Math.max(0, weddingDate.getTime() - Date.now());
   const totalSeconds = Math.floor(remaining / 1000);
@@ -121,7 +242,14 @@ function updateCountdown() {
   };
 
   for (const [unit, value] of Object.entries(values)) {
-    units[unit].textContent = String(value).padStart(2, "0");
+    const nextValue = String(value).padStart(2, "0");
+    const element = units[unit];
+    if (element.textContent === nextValue) continue;
+    element.textContent = nextValue;
+    const bounds = element.getBoundingClientRect();
+    if (!motionPaused && !document.hidden && bounds.top < window.innerHeight && bounds.bottom > 0 && invitationIntro.hidden) {
+      element.animate([{ opacity: .45, transform: "translateY(5px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 350, easing: "ease-out" });
+    }
   }
 }
 
@@ -137,6 +265,8 @@ function setLanguage(language) {
   document.querySelectorAll("[data-i18n-html]").forEach((element) => {
     element.innerHTML = copy[element.dataset.i18nHtml];
   });
+  document.querySelectorAll("[data-i18n-aria]").forEach(element => element.setAttribute("aria-label", copy[element.dataset.i18nAria]));
+  refreshMotionButton();
   document.querySelectorAll("[data-language]").forEach((button) => {
     const isActive = button.dataset.language === language;
     button.classList.toggle("is-active", isActive);
@@ -163,5 +293,5 @@ try {
 
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
-
+initializeInvitation();
 

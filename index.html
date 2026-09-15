@@ -21,32 +21,44 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20260915-invitation-reveal" />
+    <meta name="theme-color" content="#fffaf8" />
+    <link rel="preload" as="image" href="assets/wedding-florals.webp" />
+    <link rel="stylesheet" href="styles.css?v=20260915-floral-2" />
   </head>
   <body>
-    <section class="invitation-intro" aria-label="Open your wedding invitation">
-      <div class="invitation-intro__glow" aria-hidden="true"></div>
-      <div class="invitation-intro__petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+      <symbol id="botanical" viewBox="0 0 160 70"><path d="M8 56C47 56 88 16 151 20M38 48Q24 30 31 18Q50 27 48 43M67 34Q53 16 64 7Q81 15 78 29M94 24Q102 43 117 41Q114 25 104 22M123 20Q129 6 142 5Q143 19 130 20M56 41Q58 60 76 59Q76 43 67 36"/></symbol>
+      <symbol id="rings" viewBox="0 0 80 80"><circle cx="29" cy="45" r="19"/><circle cx="51" cy="45" r="19"/><path d="m21 22 8-10 8 10-8 6zM29 12v16M46 20l5-8 5 8M35 6l3-4M20 6l-3-4"/></symbol>
+      <symbol id="glasses" viewBox="0 0 80 80"><path d="m19 9 20 6-7 23c-5 10-23 4-20-6ZM29 41l-6 23M12 61l22 6M49 15l20-6 7 23c3 12-15 18-20 6ZM60 41l6 23M55 67l22-6M15 23l20 6M53 29l20-6M41 4v7M36 8l-3-4M47 8l3-4"/></symbol>
+      <symbol id="music" viewBox="0 0 80 80"><path d="M29 56V21l35-9v35M29 29l35-9"/><ellipse cx="20" cy="59" rx="10" ry="7" transform="rotate(-20 20 59)"/><ellipse cx="55" cy="50" rx="10" ry="7" transform="rotate(-20 55 50)"/><path d="m11 18 3-6 3 6 6 3-6 3-3 6-3-6-6-3z"/></symbol>
+    </defs></svg>
+    <section class="invitation-intro" role="dialog" aria-modal="true" aria-labelledby="opening-title" hidden>
+      <img class="cover-floral cover-floral--left" src="assets/wedding-florals.webp" alt="" />
+      <img class="cover-floral cover-floral--right" src="assets/wedding-florals.webp" alt="" />
+      <div class="opening-heading"><p class="eyebrow" data-i18n="openingEyebrow">A little envelope. A lifetime of love.</p><h2 id="opening-title" data-i18n="openingTitle">Something beautiful awaits</h2></div>
       <div class="envelope-scene">
-        <div class="envelope" aria-hidden="true">
-          <div class="envelope__back"></div>
-          <div class="envelope__letter">
-            <span class="envelope__letter-eyebrow">A wedding celebration</span>
+        <button class="envelope" type="button" aria-label="Open wedding invitation" data-i18n-aria="openInvitation">
+          <span class="envelope__back" aria-hidden="true"></span>
+          <span class="envelope__letter" aria-hidden="true">
+            <span class="envelope__letter-eyebrow" data-i18n="letterEyebrow">You're invited to our wedding</span>
             <strong>Ye <em>&amp;</em> Nang</strong>
             <span class="envelope__letter-date">08 · 11 · 2026</span>
-          </div>
-          <div class="envelope__front"></div>
-          <div class="envelope__flap"></div>
-          <span class="envelope__seal">Y<em>&amp;</em>N</span>
-        </div>
-        <p class="invitation-intro__prompt">You are warmly invited</p>
-        <button class="invitation-intro__button" type="button" aria-label="Open Ye and Nang's wedding invitation">
-          <span>Open invitation</span><b aria-hidden="true">&#8594;</b>
+          </span>
+          <span class="envelope__front" aria-hidden="true"></span>
+          <span class="envelope__flap" aria-hidden="true"></span>
+          <span class="envelope__seal" aria-hidden="true"><span>Y<em>&amp;</em>N</span></span>
+        </button>
+        <p class="invitation-intro__prompt" data-i18n="openingPrompt">Sealed with love, just for you</p>
+        <button class="invitation-intro__button" type="button">
+          <span data-i18n="openInvitation">Open invitation</span><b aria-hidden="true">&#8594;</b>
         </button>
       </div>
     </section>
     <header class="site-header">
       <a class="site-header__brand" href="#top" aria-label="Ye and Nang, back to top">Y<span>&amp;</span>N</a>
+      <a class="header-date" href="#celebrate">08 . 11 . 2026</a>
       <nav class="language-switch" aria-label="Choose language">
         <button class="language-switch__button is-active" type="button" data-language="en" aria-pressed="true">EN</button>
         <button class="language-switch__button" type="button" data-language="th" aria-pressed="false">TH</button>
@@ -54,11 +66,15 @@
     </header>
     <main>
       <section class="hero" id="top" aria-labelledby="couple-names">
+        <div class="hero__arch" aria-hidden="true"></div>
+        <div class="hero__floral hero__floral--left" aria-hidden="true"><img src="assets/wedding-florals.webp" alt="" /></div>
+        <div class="hero__floral hero__floral--right" aria-hidden="true"><img src="assets/wedding-florals.webp" alt="" /></div>
         <div class="hero__copy">
           <div class="hero__copy-inner">
+            <svg class="botanical hero__botanical" aria-hidden="true"><use href="#botanical"/></svg>
             <p class="eyebrow" data-i18n="heroEyebrow">Together with their families</p>
             <p class="hero__invite" data-i18n="heroInvite">joyfully invite you to celebrate the wedding of</p>
-            <h1 id="couple-names"><span>Ye</span><em>&amp;</em><span>Nang</span></h1>
+            <h1 id="couple-names" tabindex="-1"><span>Ye</span><em>&amp;</em><span>Nang</span></h1>
             <p class="hero__full-names">Ye Moe Myint &amp; Nang Htet Htet Aung</p>
             <div class="hero__rule" aria-hidden="true"><span>&#10047;</span></div>
             <div class="hero__date" data-i18n-html="heroDate">Sunday, the eighth<br />of November</div>
@@ -69,10 +85,7 @@
             </div>
           </div>
         </div>
-        <div class="hero__visual" aria-hidden="true">
-          <img src="assets/editorial-roses.jpg" alt="" fetchpriority="high" />
-          <span class="hero__visual-label">08 <span>/</span> 11 <span>/</span> 2026</span>
-        </div>
+        <a class="scroll-cue" href="#celebrate"><span data-i18n="scrollExplore">Scroll to unfold our day</span><span aria-hidden="true">↓</span></a>
       </section>
 
       <section class="savebar" aria-label="Calendar options">
@@ -92,13 +105,14 @@
       </section>
 
       <section class="intro section" id="celebrate" aria-labelledby="celebrate-title">
+        <div class="intro__bouquet" aria-hidden="true"><img src="assets/wedding-florals.webp" alt="" loading="lazy" /></div>
         <div class="container intro__layout">
           <div class="intro__heading">
             <p class="eyebrow" data-i18n="celebrateEyebrow">A celebration of love</p>
             <h2 id="celebrate-title" data-i18n="celebrateTitle">We're getting married</h2>
           </div>
           <div class="intro__copy">
-            <span class="intro__flower" aria-hidden="true">&#10047;</span>
+            <svg class="botanical" aria-hidden="true"><use href="#botanical"/></svg>
             <p data-i18n="celebrateCopy">
               We would be so happy to have you by our side as we begin our
               next chapter. Join us for an evening of vows, dinner, dancing,
@@ -114,18 +128,21 @@
           <h2 id="schedule-title" data-i18n="scheduleDate">Sunday, November 8, 2026</h2>
           <div class="schedule__grid">
             <article class="schedule-card">
+              <svg class="line-icon" aria-hidden="true"><use href="#rings"/></svg>
               <div class="schedule-card__icon" aria-hidden="true">01</div>
               <h3 data-i18n="ceremony">Ceremony</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
               <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
             <article class="schedule-card">
+              <svg class="line-icon" aria-hidden="true"><use href="#glasses"/></svg>
               <div class="schedule-card__icon" aria-hidden="true">02</div>
               <h3 data-i18n="reception">Reception</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
               <p data-i18n-html="detailsSoon">Wedding details<br />will be shared soon</p>
             </article>
             <article class="schedule-card">
+              <svg class="line-icon" aria-hidden="true"><use href="#music"/></svg>
               <div class="schedule-card__icon" aria-hidden="true">03</div>
               <h3 data-i18n="dinnerDancing">Dinner &amp; Dancing</h3>
               <p class="schedule-card__time" data-i18n="timeTba">Time to be announced</p>
@@ -138,8 +155,8 @@
       <section class="venue section" aria-labelledby="venue-title">
         <div class="container venue__layout">
           <div class="venue__visual" aria-hidden="true">
-            <img src="assets/editorial-roses.jpg" alt="" loading="lazy" />
-            <span>08.11.2026</span>
+            <div class="venue__keepsake"><svg class="botanical" aria-hidden="true"><use href="#botanical"/></svg><span>Ye <em>&amp;</em> Nang</span><small>08 . 11 . 2026</small></div>
+            <img src="assets/wedding-florals.webp" alt="" loading="lazy" />
           </div>
           <div class="venue__copy">
             <p class="eyebrow" data-i18n="venueEyebrow">Where to find us</p>
@@ -156,7 +173,7 @@
         <div class="container">
           <p class="eyebrow eyebrow--light" data-i18n="countdownEyebrow">Counting down</p>
           <h2 id="countdown-title" data-i18n="countdownTitle">Until we say I do</h2>
-          <div class="countdown__grid" aria-live="polite">
+          <div class="countdown__grid" aria-label="Time until our wedding">
             <div><strong id="days">--</strong><span data-i18n="days">Days</span></div>
             <div><strong id="hours">--</strong><span data-i18n="hours">Hours</span></div>
             <div><strong id="minutes">--</strong><span data-i18n="minutes">Minutes</span></div>
@@ -167,7 +184,7 @@
 
       <section class="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
         <div class="container rsvp__frame">
-          <div class="rsvp__art" aria-hidden="true"><span>Y<span>&amp;</span>N</span></div>
+          <div class="rsvp__art" aria-hidden="true"><img src="assets/wedding-florals.webp" alt="" loading="lazy"/><span>Y<span>&amp;</span>N</span></div>
           <div class="rsvp__content">
             <p class="eyebrow" data-i18n="rsvpEyebrow">Kindly reply</p>
             <h2 id="rsvp-title" data-i18n="rsvpTitle">Will you celebrate with us?</h2>
@@ -180,12 +197,13 @@
     </main>
 
     <footer>
+      <svg class="botanical" aria-hidden="true"><use href="#botanical"/></svg>
       <p>Ye <span>&amp;</span> Nang</p>
       <small data-i18n="footerDate">November 8, 2026</small>
+      <button class="replay-button" type="button" data-i18n="replay" hidden>Open the envelope again</button>
     </footer>
-
-    <script src="script.js?v=20260915-invitation-reveal"></script>
+    <button class="motion-toggle" type="button" aria-pressed="false" hidden><span class="motion-toggle__icon" aria-hidden="true">Ⅱ</span><span class="motion-toggle__label">Pause motion</span></button>
+    <script src="script.js?v=20260915-floral-2"></script>
   </body>
 </html>
-
 
