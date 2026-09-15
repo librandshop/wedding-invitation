@@ -19,6 +19,7 @@ body {
   font-size: 15px;
   line-height: 1.7;
 }
+body.invitation-open { overflow: hidden; }
 a { color: inherit; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; }
@@ -39,6 +40,62 @@ h2 {
   letter-spacing: -.045em;
   line-height: .93;
 }
+
+/* The first thing guests see: a sealed invitation, ready to be opened. */
+.invitation-intro {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  min-height: 100svh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 246, 241, .94) 0 14%, transparent 42%),
+    linear-gradient(135deg, #2b0a1b, #551c38 48%, #280918);
+  color: #fff8f6;
+  place-items: center;
+  transition: visibility 0s linear 1.35s, opacity .6s ease .72s;
+}
+.invitation-intro::before, .invitation-intro::after {
+  position: absolute;
+  width: min(68vw, 820px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(247, 207, 219, .13);
+  border-radius: 50%;
+  content: "";
+}
+.invitation-intro::before { transform: translate(-38%, -34%); }
+.invitation-intro::after { right: -25%; bottom: -43%; }
+.invitation-intro__glow { position: absolute; width: 440px; aspect-ratio: 1; border-radius: 50%; background: #d88ba6; filter: blur(105px); opacity: .14; }
+.envelope-scene { position: relative; z-index: 1; display: grid; justify-items: center; width: min(92vw, 500px); perspective: 1300px; }
+.envelope { position: relative; width: min(83vw, 390px); height: min(55vw, 258px); max-height: 258px; margin-bottom: 45px; filter: drop-shadow(0 31px 27px rgba(17, 2, 10, .32)); transform-style: preserve-3d; }
+.envelope__back, .envelope__front, .envelope__flap { position: absolute; inset: 0; }
+.envelope__back { background: linear-gradient(135deg, #f8e2e2, #e9c1cc); }
+.envelope__letter { position: absolute; z-index: 1; top: 12px; left: 7%; display: grid; align-content: center; justify-items: center; width: 86%; height: 97%; padding: 19px; background: #fffcf8; color: var(--plum); text-align: center; box-shadow: 0 0 0 1px rgba(126, 62, 86, .08); transition: transform 1.15s cubic-bezier(.2,.8,.17,1), opacity .45s ease; }
+.envelope__letter::before { position: absolute; inset: 9px; border: 1px solid #e6bdca; content: ""; }
+.envelope__letter-eyebrow, .envelope__letter-date { position: relative; color: var(--berry); font: 700 7px/1.5 "Manrope", Arial, sans-serif; letter-spacing: .19em; text-transform: uppercase; }
+.envelope__letter strong { position: relative; font: 600 clamp(37px, 9vw, 53px)/.8 "Cormorant Garamond", Georgia, serif; letter-spacing: -.08em; }
+.envelope__letter strong em { color: var(--rose); font-size: .68em; font-weight: 400; }
+.envelope__front { z-index: 3; background: linear-gradient(145deg, transparent 49.6%, #f2d2d8 50%) left, linear-gradient(215deg, transparent 49.6%, #e8bdc8 50%) right; background-size: 50.1% 100%; background-repeat: no-repeat; }
+.envelope__flap { z-index: 4; height: 56%; transform-origin: top; background: linear-gradient(145deg, #fadfe2, #e8bbc6); clip-path: polygon(0 0, 100% 0, 50% 100%); transition: transform .95s cubic-bezier(.2,.75,.2,1), z-index 0s linear .44s; backface-visibility: hidden; }
+.envelope__seal { position: absolute; z-index: 5; top: calc(50% - 25px); left: calc(50% - 25px); display: grid; width: 50px; aspect-ratio: 1; border: 1px solid #f7ccd8; border-radius: 50%; background: #822d50; box-shadow: 0 3px 0 rgba(68, 14, 35, .2), inset 0 0 0 3px #9d4667; color: #fff3f5; font: 600 21px/1 "Cormorant Garamond", Georgia, serif; letter-spacing: -.1em; place-items: center; transition: opacity .28s ease, transform .5s ease; }
+.envelope__seal em { color: #edbbca; font-size: .7em; font-weight: 400; }
+.invitation-intro__prompt { margin: 0 0 17px; color: #efd3dd; font: italic 25px/1 "Cormorant Garamond", Georgia, serif; letter-spacing: .02em; }
+.invitation-intro__button { display: inline-flex; align-items: center; gap: 18px; padding: 0 0 9px; border: 0; border-bottom: 1px solid #d998ae; background: transparent; color: #fff7f7; cursor: pointer; font: 700 10px/1 "Manrope", Arial, sans-serif; letter-spacing: .19em; text-transform: uppercase; }
+.invitation-intro__button b { color: #e6a8bb; font: 400 21px/.6 "Cormorant Garamond", Georgia, serif; transition: transform .2s ease; }
+.invitation-intro__button:hover b { transform: translateX(5px); }
+.invitation-intro__button:focus-visible { outline: 2px solid #fff; outline-offset: 7px; }
+.invitation-intro__petals i { position: absolute; z-index: 0; width: 12px; height: 20px; border-radius: 100% 0 100% 0; background: #e7a7bb; opacity: .45; animation: petal-drift 8s linear infinite; }
+.invitation-intro__petals i:nth-child(1) { top: 13%; left: 13%; animation-delay: -2s; }.invitation-intro__petals i:nth-child(2) { top: 25%; right: 14%; width: 9px; height: 15px; animation-delay: -6s; }.invitation-intro__petals i:nth-child(3) { bottom: 12%; left: 25%; animation-delay: -4s; }.invitation-intro__petals i:nth-child(4) { right: 29%; bottom: 18%; width: 8px; height: 13px; animation-delay: -7s; }.invitation-intro__petals i:nth-child(5) { top: 9%; left: 46%; width: 8px; height: 13px; animation-delay: -1s; }
+body.invitation-opening .envelope__flap { z-index: 0; transform: rotateX(180deg); }
+body.invitation-opening .envelope__seal { opacity: 0; transform: scale(.55); }
+body.invitation-opening .envelope__letter { transform: translateY(-38vh) scale(1.06); }
+body.invitation-opening .invitation-intro__prompt, body.invitation-opening .invitation-intro__button { opacity: 0; transform: translateY(10px); transition: opacity .2s ease, transform .2s ease; }
+body.invitation-opening .invitation-intro { opacity: 0; visibility: hidden; }
+@keyframes petal-drift { 0% { transform: translate3d(0, -20px, 0) rotate(0deg); } 100% { transform: translate3d(80px, 105vh, 0) rotate(370deg); } }
+
+body:not(.invitation-opening) main > *, body:not(.invitation-opening) .site-header, body:not(.invitation-opening) footer { animation: page-settle .9s ease both; }
+@keyframes page-settle { from { opacity: .94; } to { opacity: 1; } }
 
 /* Editorial cover */
 .site-header {
@@ -362,5 +419,7 @@ html[lang="th"] footer small { letter-spacing: .06em; text-transform: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .button { transition: none; }
+  .invitation-intro, .envelope__letter, .envelope__flap, .envelope__seal, .invitation-intro__petals i, .invitation-intro__prompt, .invitation-intro__button { animation: none; transition-duration: .01ms; }
 }
+
 
