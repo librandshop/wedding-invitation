@@ -9,6 +9,18 @@ let revealObserver;
 const openingSkip = document.querySelector(".opening-skip");
 const openingDuration = 6600;
 
+function positionFoldedCard() {
+  // One physical card lives between the envelope back and its front pocket.
+  // Use untransformed dimensions so replay and viewport changes remain exact.
+  const envelopeBounds = openInvitation.getBoundingClientRect();
+  const card = document.querySelector('.keepsake');
+  const foldedScale = Math.min(envelopeBounds.width * .86 / card.offsetHeight, envelopeBounds.height * .84 / card.offsetWidth);
+  invitationIntro.style.setProperty('--card-start-scale', foldedScale);
+  invitationIntro.style.setProperty('--card-end-x', `${innerWidth / 2 - envelopeBounds.left - envelopeBounds.width / 2}px`);
+  invitationIntro.style.setProperty('--card-end-y', `${innerHeight / 2 - envelopeBounds.top - envelopeBounds.height / 2}px`);
+  invitationIntro.style.setProperty('--card-lift-y', `${-envelopeBounds.height * .9}px`);
+}
+
 function finishOpening() {
   window.clearTimeout(openingTimer);
   invitationIntro.hidden = true;
@@ -24,13 +36,7 @@ function finishOpening() {
 function revealInvitation() {
   if (invitationIntro.hidden || document.body.classList.contains("invitation-opening")) return;
   if (motionPaused) { finishOpening(); return; }
-  // Match the folded card's starting position to the real envelope at any size.
-  const envelopeBounds = openInvitation.getBoundingClientRect();
-  const cardBounds = document.querySelector(".keepsake").getBoundingClientRect();
-  const foldedScale = Math.min(envelopeBounds.width * .8 / cardBounds.height, envelopeBounds.height * .8 / cardBounds.width);
-  invitationIntro.style.setProperty("--card-start-x", `${envelopeBounds.left + envelopeBounds.width / 2 - window.innerWidth / 2}px`);
-  invitationIntro.style.setProperty("--card-start-y", `${envelopeBounds.top + envelopeBounds.height / 2 - window.innerHeight / 2}px`);
-  invitationIntro.style.setProperty("--card-start-scale", foldedScale);
+  positionFoldedCard();
   openInvitation.setAttribute("aria-disabled", "true");
   openingSkip.hidden = false;
   openingSkip.focus({ preventScroll: true });
@@ -46,6 +52,7 @@ function showEnvelope() {
   openInvitation.removeAttribute("aria-disabled");
   window.scrollTo({ top: 0, behavior: "instant" });
   invitationIntro.hidden = false;
+  positionFoldedCard();
   document.body.classList.add("invitation-open");
   pageContent.forEach(element => { element.inert = true; });
   document.querySelectorAll("[data-reveal]").forEach(element => element.classList.remove("is-visible"));
@@ -97,7 +104,7 @@ function initializeInvitation() {
   document.querySelectorAll(".hero__copy-inner > *").forEach((element, index) => element.style.setProperty("--order", index));
   const groups = [
     ".savebar__copy, .calendar-actions", ".intro__heading, .intro__copy",
-    ".schedule > .container > .eyebrow, .schedule h2", ".schedule-card",
+    ".schedule > .container > .eyebrow, .schedule h2", ".schedule-card", ".schedule__thread",
     ".venue__visual, .venue__copy", ".countdown .eyebrow, .countdown h2",
     ".countdown__grid > div", ".rsvp__frame", ".rsvp__content > *", "footer > *"
   ];
@@ -151,6 +158,12 @@ function initializeInvitation() {
     if (!scrollFrame) { scrollFrame = true; requestAnimationFrame(updateProgress); }
   }, { passive: true });
   window.addEventListener("resize", updateProgress);
+  window.addEventListener('resize', () => {
+    if (!invitationIntro.hidden && !document.body.classList.contains('invitation-opening')) positionFoldedCard();
+  });
+  document.fonts.ready.then(() => {
+    if (!invitationIntro.hidden && !document.body.classList.contains('invitation-opening')) positionFoldedCard();
+  });
   if (window.location.hash && document.getElementById(window.location.hash.slice(1))) {
     document.body.classList.add("invitation-ready");
     observeReveals();
